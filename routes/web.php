@@ -1,0 +1,69 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\GrammarController;
+use App\Http\Controllers\CourseMaterialController;
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/terms-of-service', function () {
+    return view('terms-of-service');
+})->name('terms');
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+})->name('privacy');
+
+// Course Material Routes
+Route::get('/course-material', [CourseMaterialController::class, 'index'])->name('course-material.index');
+Route::get('/course-material/category/{category}', [CourseMaterialController::class, 'showCategory'])->name('course-material.category');
+Route::get('/course-material/content/{content}', [CourseMaterialController::class, 'showContent'])->name('course-material.content');
+
+// Admin auth
+Route::get('/admin/login', [AdminController::class, 'showLogin'])->name('admin.login');
+Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login.post');
+Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout.get');
+Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
+// Admin counsellors
+Route::middleware('admin')->group(function () {
+    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/counsellors', [AdminController::class, 'index'])->name('admin.counsellors.index');
+    Route::get('/admin/counsellors/create', [AdminController::class, 'create'])->name('admin.counsellors.create');
+    Route::post('/admin/counsellors', [AdminController::class, 'store'])->name('admin.counsellors.store');
+    Route::get('/admin/counsellors/{counsellor}/edit', [AdminController::class, 'edit'])->name('admin.counsellors.edit');
+    Route::put('/admin/counsellors/{counsellor}', [AdminController::class, 'update'])->name('admin.counsellors.update');
+    Route::delete('/admin/counsellors/{counsellor}', [AdminController::class, 'destroy'])->name('admin.counsellors.destroy');
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users.index');
+    Route::get('/admin/users/create', [AdminController::class, 'createUser'])->name('admin.users.create');
+    Route::post('/admin/users', [AdminController::class, 'storeUser'])->name('admin.users.store');
+    
+    // Grammar/Vocabulary Management Routes
+    Route::prefix('admin/grammar')->name('admin.grammar.')->group(function () {
+        // Categories
+        Route::get('/categories', [GrammarController::class, 'categories'])->name('categories');
+        Route::get('/categories/create', [GrammarController::class, 'createCategory'])->name('categories.create');
+        Route::post('/categories', [GrammarController::class, 'storeCategory'])->name('categories.store');
+        Route::get('/categories/{category}/edit', [GrammarController::class, 'editCategory'])->name('categories.edit');
+        Route::put('/categories/{category}', [GrammarController::class, 'updateCategory'])->name('categories.update');
+        Route::delete('/categories/{category}', [GrammarController::class, 'destroyCategory'])->name('categories.destroy');
+        
+        // Subcategories
+        Route::get('/subcategories', [GrammarController::class, 'subcategories'])->name('subcategories');
+        Route::get('/subcategories/create', [GrammarController::class, 'createSubcategory'])->name('subcategories.create');
+        Route::post('/subcategories', [GrammarController::class, 'storeSubcategory'])->name('subcategories.store');
+        Route::get('/subcategories/{subcategory}/edit', [GrammarController::class, 'editSubcategory'])->name('subcategories.edit');
+        Route::put('/subcategories/{subcategory}', [GrammarController::class, 'updateSubcategory'])->name('subcategories.update');
+        Route::delete('/subcategories/{subcategory}', [GrammarController::class, 'destroySubcategory'])->name('subcategories.destroy');
+        
+        // Contents
+        Route::get('/contents', [GrammarController::class, 'index'])->name('contents.index');
+        Route::get('/contents/create', [GrammarController::class, 'create'])->name('contents.create');
+        Route::post('/contents', [GrammarController::class, 'store'])->name('contents.store');
+        Route::get('/contents/{content}', [GrammarController::class, 'show'])->name('contents.show');
+        Route::get('/contents/{content}/edit', [GrammarController::class, 'edit'])->name('contents.edit');
+        Route::put('/contents/{content}', [GrammarController::class, 'update'])->name('contents.update');
+        Route::delete('/contents/{content}', [GrammarController::class, 'destroy'])->name('contents.destroy');
+    });
+});
