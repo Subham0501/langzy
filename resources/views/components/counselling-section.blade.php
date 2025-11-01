@@ -20,9 +20,7 @@
                             <div class="flex items-center gap-2 mb-1">
                                 <h3 class="text-xl font-semibold text-langzy-text">{{ $c->name }}</h3>
                                 @if($c->priority > 0)
-                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                        Priority {{ $c->priority }}
-                                    </span>
+                                
                                 @endif
                             </div>
                             <p class="text-sm text-langzy-gray">{{ $c->role }}</p>

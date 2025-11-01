@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Counsellor;
 use App\Models\User;
+use App\Models\Teacher;
 use App\Models\GrammarCategory;
 use App\Models\GrammarSubcategory;
 use App\Models\GrammarContent;
 use App\Services\ImageUploadService;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -27,20 +29,41 @@ class AdminController extends Controller
     public function login(Request $request)
     {
         $request->validate(['email' => 'required|email', 'password' => 'required']);
-        // Authenticate against users table with role 'a' for admin
-        $user = User::where('email', $request->email)->where('role', 'a')->first();
-        if ($user && Hash::check($request->password, $user->password)) {
+        
+        // First try to authenticate as admin (role 'a')
+        $adminUser = User::where('email', $request->email)->where('role', 'a')->first();
+        if ($adminUser && Hash::check($request->password, $adminUser->password)) {
             $request->session()->put('is_admin', true);
-            $request->session()->put('admin_user_id', $user->id);
+            $request->session()->put('admin_user_id', $adminUser->id);
             return redirect()->route('admin.dashboard');
         }
-        return back()->withErrors(['email' => 'Invalid credentials or not an admin']);
+        
+        // Then try to authenticate as regular user (role 'u') using Laravel Auth
+        $user = User::where('email', $request->email)->where('role', 'u')->first();
+        if ($user && Hash::check($request->password, $user->password)) {
+            Auth::login($user);
+            return redirect()->route('home');
+        }
+        
+        return back()->withErrors(['email' => 'Invalid credentials']);
     }
 
     public function logout(Request $request)
     {
-        $request->session()->forget('is_admin');
-        return redirect()->route('admin.login');
+        // Logout admin session
+        if ($request->session()->has('is_admin')) {
+            $request->session()->forget('is_admin');
+            $request->session()->forget('admin_user_id');
+        }
+        
+        // Logout Laravel Auth user
+        if (Auth::check()) {
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+        }
+        
+        return redirect()->route('home');
     }
 
     public function index()
@@ -156,6 +179,8 @@ class AdminController extends Controller
             'users' => User::count(),
             'counsellors' => Counsellor::count(),
             'active_counsellors' => Counsellor::where('is_active', true)->count(),
+            'teachers' => Teacher::count(),
+            'active_teachers' => Teacher::where('is_active', true)->count(),
             'grammar_categories' => GrammarCategory::count(),
             'grammar_subcategories' => GrammarSubcategory::count(),
             'grammar_contents' => GrammarContent::count(),

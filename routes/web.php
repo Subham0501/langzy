@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\GrammarController;
+use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\CourseMaterialController;
+use App\Http\Controllers\TeacherRatingController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
@@ -19,6 +21,12 @@ Route::get('/privacy-policy', function () {
 Route::get('/course-material', [CourseMaterialController::class, 'index'])->name('course-material.index');
 Route::get('/course-material/category/{category}', [CourseMaterialController::class, 'showCategory'])->name('course-material.category');
 Route::get('/course-material/content/{content}', [CourseMaterialController::class, 'showContent'])->name('course-material.content');
+
+// Teacher Rating Routes
+Route::post('/teacher-ratings', [TeacherRatingController::class, 'store'])->name('teacher-ratings.store');
+Route::put('/teacher-ratings/{rating}', [TeacherRatingController::class, 'update'])->name('teacher-ratings.update');
+Route::delete('/teacher-ratings/{rating}', [TeacherRatingController::class, 'destroy'])->name('teacher-ratings.destroy');
+Route::get('/teachers/{teacher}/ratings', [TeacherRatingController::class, 'getTeacherRatings'])->name('teachers.ratings');
 
 // Admin auth
 Route::get('/admin/login', [AdminController::class, 'showLogin'])->name('admin.login');
@@ -39,6 +47,17 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/users/create', [AdminController::class, 'createUser'])->name('admin.users.create');
     Route::post('/admin/users', [AdminController::class, 'storeUser'])->name('admin.users.store');
     
+    // Teacher Management Routes
+    Route::resource('admin/teachers', TeacherController::class)->names([
+        'index' => 'admin.teachers.index',
+        'create' => 'admin.teachers.create',
+        'store' => 'admin.teachers.store',
+        'show' => 'admin.teachers.show',
+        'edit' => 'admin.teachers.edit',
+        'update' => 'admin.teachers.update',
+        'destroy' => 'admin.teachers.destroy',
+    ]);
+
     // Grammar/Vocabulary Management Routes
     Route::prefix('admin/grammar')->name('admin.grammar.')->group(function () {
         // Categories

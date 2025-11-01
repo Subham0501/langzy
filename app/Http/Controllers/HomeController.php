@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Counsellor;
+use App\Models\Teacher;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,13 @@ class HomeController extends Controller
             ->orderBy('priority', 'desc')
             ->orderBy('created_at', 'desc')
             ->get();
-        return view('home', compact('counsellors'));
+            
+        $teachers = Teacher::active()
+            ->orderedByPriority()
+            ->with('ratings')
+            ->get();
+            
+        return view('home', compact('counsellors', 'teachers'));
     }
 
     public function contact()

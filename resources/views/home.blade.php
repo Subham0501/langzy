@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Langzy - Grow your words. Expand your world.</title>
     <meta name="description" content="Master new languages with expert tutors, structured courses, and personalized learning paths. Join thousands of successful language learners worldwide.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('Group 36.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('Group 36.png') }}">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,6 +53,9 @@
 
     <!-- Testimonials Section -->
     @include('components.testimonials-section')
+
+    <!-- Teacher Section -->
+    @include('components.teacher-section')
 
     <!-- Counselling Section -->
     @include('components.counselling-section')
