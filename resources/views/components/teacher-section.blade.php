@@ -2,6 +2,31 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- Responsive Close Button Styles -->
+<style>
+    @media (max-width: 768px) {
+        .swal2-close {
+            width: 36px !important;
+            height: 36px !important;
+            font-size: 24px !important;
+            line-height: 36px !important;
+            padding: 0 !important;
+        }
+    }
+    @media (min-width: 769px) {
+        .swal2-close {
+            width: 32px !important;
+            height: 32px !important;
+            font-size: 20px !important;
+            line-height: 32px !important;
+        }
+    }
+    .swal2-close:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s ease;
+    }
+</style>
+
 <!-- Teacher Section -->
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,7 +38,8 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @if(isset($teachers) && $teachers->count())
                 @foreach($teachers as $teacher)
-                <div class="bg-gray-50 rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 flex flex-col h-full">
+                <div class="bg-gray-50 rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 flex flex-col h-full cursor-pointer teacher-card" 
+                     onclick="showTeacherModal({{ $teacher->id }}, {{ json_encode($teacher->name) }}, {{ json_encode($teacher->role) }}, {{ json_encode($teacher->country) }}, {{ json_encode($teacher->description ?? '') }}, {{ json_encode($teacher->photo_url ?? '') }}, {{ number_format($teacher->average_rating, 1) }}, {{ $teacher->total_ratings }})">
                     <div class="flex items-center gap-4 mb-4">
                         @if($teacher->photo_url)
                             <img src="{{ $teacher->photo_url }}" alt="{{ $teacher->name }}" class="w-16 h-16 rounded-full object-cover" onerror="this.src='https://i.pravatar.cc/120'">
@@ -29,7 +55,17 @@
                         </div>
                     </div>
                     
-                    <p class="text-langzy-gray mb-4 flex-grow">{{ Str::limit($teacher->description, 120) }}</p>
+                    @php
+                        $fullDescription = $teacher->description ?? '';
+                        $truncatedDescription = Str::limit($fullDescription, 120);
+                        $isTruncated = strlen($fullDescription) > 120;
+                    @endphp
+                    <p class="text-langzy-gray mb-4 flex-grow">
+                        {{ $truncatedDescription }}
+                        @if($isTruncated)
+                            <span class="text-langzy-blue text-sm font-medium">... Read more</span>
+                        @endif
+                    </p>
                     
                     <!-- Rating Display -->
                     <div class="flex items-center justify-between mb-4">
@@ -65,7 +101,7 @@
                     
                    
                     @if(auth()->check() && auth()->user()->role === 'u')
-                        <div class="border-t pt-4">
+                        <div class="border-t pt-4 stop-propagation">
                             @php $userHasRated = $teacher->ratings->contains('user_id', auth()->id()); @endphp
                             @if($userHasRated)
                                 <div class="text-sm text-gray-600">
@@ -100,7 +136,7 @@
                             @endif
                         </div>
                     @else
-                        <div class="border-t pt-4">
+                        <div class="border-t pt-4 stop-propagation">
                             <a href="{{ route('admin.login') }}" class="w-full text-center text-sm text-langzy-blue hover:text-blue-600 font-medium block">
                                 Login to rate this teacher
                             </a>
@@ -125,6 +161,84 @@
 </section>
 
 <script>
+// Function to show full teacher details in modal
+function showTeacherModal(teacherId, teacherName, role, country, description, photoUrl, averageRating, totalRatings) {
+    // Prevent if clicked on rating form or buttons
+    if (event.target.closest('.stop-propagation') || event.target.closest('button') || event.target.closest('form') || event.target.closest('a')) {
+        return;
+    }
+    
+    const isMobile = window.innerWidth < 768;
+    
+    // Build stars HTML with responsive sizing
+    let starsHtml = '';
+    const starSize = isMobile ? 'w-5 h-5' : 'w-6 h-6';
+    const rating = parseFloat(averageRating);
+    for (let i = 1; i <= 5; i++) {
+        if (i <= Math.floor(rating)) {
+            starsHtml += `<svg class="${starSize} text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>`;
+        } else if (i - 0.5 <= rating) {
+            starsHtml += `<svg class="${starSize} text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><defs><linearGradient id="half-modal-${i}"><stop offset="50%" stop-color="currentColor"/><stop offset="50%" stop-color="#E5E7EB"/></linearGradient></defs><path fill="url(#half-modal-${i})" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>`;
+        } else {
+            starsHtml += `<svg class="${starSize} text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>`;
+        }
+    }
+    
+    const imageSize = isMobile ? 'w-32 h-32' : 'w-40 h-40';
+    const imageHtml = photoUrl ? 
+        `<img src="${photoUrl}" alt="${teacherName}" class="${imageSize} rounded-full object-cover mx-auto mb-4 md:mb-6" onerror="this.src='https://i.pravatar.cc/160'">` :
+        `<img src="https://i.pravatar.cc/160" alt="${teacherName}" class="${imageSize} rounded-full object-cover mx-auto mb-4 md:mb-6">`;
+    
+    const htmlContent = `
+        <div class="text-center mb-4 md:mb-6">
+            ${imageHtml}
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">${teacherName}</h3>
+            <p class="text-base md:text-lg text-langzy-blue mb-1">${role || ''}</p>
+            <p class="text-sm md:text-base text-gray-600 mb-3 md:mb-4">${country || ''}</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-2 mb-2">
+                <div class="flex items-center gap-1">
+                    ${starsHtml}
+                </div>
+                <span class="text-sm md:text-lg text-gray-700 font-medium">
+                    ${averageRating} (${totalRatings} ${totalRatings === 1 ? 'review' : 'reviews'})
+                </span>
+            </div>
+        </div>
+        <div class="border-t pt-4 md:pt-6">
+            <h4 class="text-lg md:text-xl font-semibold text-gray-800 mb-3 md:mb-4">About</h4>
+            <div class="text-left text-gray-700 leading-relaxed text-sm md:text-base" style="line-height: 1.7;">
+                ${(description || 'No description available.').replace(/\n/g, '<br>')}
+            </div>
+        </div>
+    `;
+    
+    Swal.fire({
+        html: htmlContent,
+        width: isMobile ? '95%' : '900px',
+        showConfirmButton: false,
+        showCloseButton: true,
+        customClass: {
+            popup: 'text-left rounded-lg',
+            htmlContainer: 'text-left',
+            closeButton: 'text-gray-400 hover:text-gray-600'
+        },
+        background: '#ffffff',
+        padding: isMobile ? '1.5rem' : '3rem',
+        allowOutsideClick: true,
+        allowEscapeKey: true,
+        backdrop: true
+    });
+}
+
+// Stop event propagation for rating forms and buttons within teacher cards only
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.teacher-card .stop-propagation, .teacher-card button, .teacher-card form, .teacher-card a').forEach(el => {
+        el.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    });
+});
+
 function toggleRatingForm(teacherId) {
     const form = document.getElementById(`rating-form-${teacherId}`);
     form.classList.toggle('hidden');

@@ -23,6 +23,16 @@ class HomeController extends Controller
         return view('home', compact('counsellors', 'teachers'));
     }
 
+    public function ourTeam()
+    {
+        $teachers = Teacher::active()
+            ->orderedByPriority()
+            ->with('ratings')
+            ->get();
+            
+        return view('our-team', compact('teachers'));
+    }
+
     public function contact()
     {
         return view('contact');

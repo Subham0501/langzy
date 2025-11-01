@@ -48,6 +48,7 @@
                 <a href="#pricing" class="text-langzy-text hover:text-langzy-blue font-medium transition-colors whitespace-nowrap">Pricing</a>
                 <a href="#reviews" class="text-langzy-text hover:text-langzy-blue font-medium transition-colors whitespace-nowrap">Reviews</a>
                 <a href="/contact" class="text-langzy-text hover:text-langzy-blue font-medium transition-colors whitespace-nowrap">Contact</a>
+                <a href="{{ route('our-team') }}" class="text-langzy-text hover:text-langzy-blue font-medium transition-colors whitespace-nowrap">Our Team</a>
             </div>
             
             <!-- Desktop Right Side Buttons - Hidden on mobile -->
@@ -64,9 +65,9 @@
             </div>
 
             <!-- Mobile Menu Button -->
-            <div class="lg:hidden">
-                <button id="mobile-menu-button" class="text-langzy-text hover:text-langzy-blue focus:outline-none focus:text-langzy-blue transition-colors">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="lg:hidden relative z-50">
+                <button id="mobile-menu-button" type="button" class="text-langzy-text hover:text-langzy-blue focus:outline-none focus:text-langzy-blue transition-colors relative z-50 p-2 -mr-2" style="pointer-events: auto; position: relative; z-index: 9999;">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" pointer-events="none">
                         <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -82,27 +83,35 @@
                 
                 <!-- Course Material Mobile Section -->
                 <div class="px-3 py-2">
-                    <div class="font-medium text-langzy-text mb-2">Course Material</div>
-                    @if($courseMaterialCategories->count() > 0)
-                        <div class="ml-4 space-y-1">
-                            @foreach($courseMaterialCategories as $category)
-                                <a href="{{ route('course-material.category', $category) }}" class="block text-sm text-langzy-gray hover:text-langzy-blue transition-colors">
-                                    {{ $category->name }}
+                    <button id="course-material-toggle" class="flex items-center justify-between w-full text-left font-medium text-langzy-text hover:text-langzy-blue transition-colors">
+                        <span>Course Material</span>
+                        <svg id="course-material-arrow" class="h-5 w-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="course-material-submenu" class="hidden mt-2">
+                        @if($courseMaterialCategories->count() > 0)
+                            <div class="ml-4 space-y-1">
+                                @foreach($courseMaterialCategories as $category)
+                                    <a href="{{ route('course-material.category', $category) }}" class="block px-3 py-2 text-sm text-langzy-gray hover:text-langzy-blue hover:bg-gray-50 rounded transition-colors">
+                                        {{ $category->name }}
+                                    </a>
+                                @endforeach
+                                <a href="{{ route('course-material.index') }}" class="block px-3 py-2 text-sm text-langzy-blue hover:text-blue-700 hover:bg-gray-50 rounded font-medium transition-colors mt-2">
+                                    View All Categories →
                                 </a>
-                            @endforeach
-                            <a href="{{ route('course-material.index') }}" class="block text-sm text-langzy-blue hover:text-blue-700 font-medium transition-colors mt-2">
-                                View All Categories →
-                            </a>
-                        </div>
-                    @else
-                        <div class="ml-4 text-sm text-langzy-gray">No course material available</div>
-                    @endif
+                            </div>
+                        @else
+                            <div class="ml-4 px-3 py-2 text-sm text-langzy-gray">No course material available</div>
+                        @endif
+                    </div>
                 </div>
                 
                
                 <a href="#pricing" class="block px-3 py-2 text-langzy-text hover:text-langzy-blue font-medium transition-colors">Pricing</a>
                 <a href="#reviews" class="block px-3 py-2 text-langzy-text hover:text-langzy-blue font-medium transition-colors">Reviews</a>
                 <a href="/contact" class="block px-3 py-2 text-langzy-text hover:text-langzy-blue font-medium transition-colors">Contact</a>
+                <a href="{{ route('our-team') }}" class="block px-3 py-2 text-langzy-text hover:text-langzy-blue font-medium transition-colors">Our Team</a>
                 <div class="pt-4 pb-2 border-t border-gray-200">
                     @if($isAuthenticated)
                         <a href="/admin" class="block px-3 py-2 text-langzy-text hover:text-langzy-blue font-medium transition-colors">Dashboard</a>
@@ -126,10 +135,57 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuIcon = document.getElementById('menu-icon');
     const closeIcon = document.getElementById('close-icon');
 
-    mobileMenuButton.addEventListener('click', function() {
-        mobileMenu.classList.toggle('hidden');
-        menuIcon.classList.toggle('hidden');
-        closeIcon.classList.toggle('hidden');
-    });
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            // Toggle mobile menu visibility
+            mobileMenu.classList.toggle('hidden');
+            
+            // Toggle icons
+            if (menuIcon && closeIcon) {
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                if (menuIcon) menuIcon.classList.remove('hidden');
+                if (closeIcon) closeIcon.classList.add('hidden');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (mobileMenuButton && mobileMenu && 
+                !mobileMenuButton.contains(event.target) && 
+                !mobileMenu.contains(event.target) &&
+                !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                if (menuIcon) menuIcon.classList.remove('hidden');
+                if (closeIcon) closeIcon.classList.add('hidden');
+            }
+        });
+
+        // Course Material submenu toggle for mobile
+        const courseMaterialToggle = document.getElementById('course-material-toggle');
+        const courseMaterialSubmenu = document.getElementById('course-material-submenu');
+        const courseMaterialArrow = document.getElementById('course-material-arrow');
+        
+        if (courseMaterialToggle && courseMaterialSubmenu && courseMaterialArrow) {
+            courseMaterialToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                courseMaterialSubmenu.classList.toggle('hidden');
+                courseMaterialArrow.classList.toggle('rotate-180');
+            });
+        }
+    }
 });
 </script>
