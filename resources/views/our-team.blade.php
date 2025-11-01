@@ -59,8 +59,8 @@
                 <!-- Ashok Shungana - CEO -->
                 <div class="bg-gradient-to-br from-blue-50 to-langzy-light rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="showTeamMemberModal('Ashok Dhungana', 'CEO', '{{ asset('WhatsApp Image 2025-11-01 at 10.09.24.jpeg') }}', 'At Langzy, our main focus has always been on helping learners truly understand and enjoy the German language. Teaching isn\'t just about grammar or vocabulary — it\'s about building confidence and creating real connections through communication.\\n\\nEvery lesson we design aims to make learning German practical, interesting, and fun. I believe that when students feel comfortable and inspired, real progress begins.\\n\\nI\'m proud to see how Langzy has grown into a community where learning feels natural and meaningful. Thank you to all our learners for being part of this journey — your dedication is what keeps us moving forward.')">
                     <div class="text-center mb-4 md:mb-6">
-                        <div class="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 mx-auto mb-3 md:mb-4 rounded-full overflow-hidden shadow-lg ring-2 md:ring-4 ring-white">
-                            <img src="{{ asset('WhatsApp Image 2025-11-01 at 10.09.24.jpeg') }}" alt="Ashok Shungana" class="w-full h-full object-cover" style="object-position: left center;">
+                        <div class="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 mx-auto mb-3 md:mb-4 rounded-full overflow-hidden shadow-lg ring-2 md:ring-4 ring-white bg-gray-200">
+                            <img src="{{ asset('WhatsApp Image 2025-11-01 at 10.09.24.jpeg') }}" alt="Ashok Shungana" class="w-full h-full object-cover" style="object-position: left center;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-langzy-blue text-3xl font-bold\'>AD</div>'">
                         </div>
                         <h3 class="text-xl sm:text-2xl font-bold text-langzy-text mb-2">Ashok Dhungana</h3>
                         <p class="text-base sm:text-lg font-semibold text-langzy-blue mb-3 md:mb-4">CEO</p>
@@ -75,8 +75,8 @@
                 <!-- Subham Pudasaini - Co-founder & Developer -->
                 <div class="bg-gradient-to-br from-langzy-light to-blue-50 rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="showTeamMemberModal('Subham Pudasaini', 'Co-founder & Developer', '{{ asset('WhatsApp Image 2025-11-01 at 10.09.07.jpeg') }}', 'When we started Langzy, our goal was simple — to make learning German feel easy, natural, and enjoyable for everyone. I wanted to build a platform that doesn\'t just teach words and grammar, but helps you truly connect with the language.\\n\\nEvery part of Langzy — from the design to the learning experience — is created with learners in mind. We keep improving, adding new features, and listening to feedback to make sure your journey with us feels smooth and rewarding.\\n\\nI\'m grateful to everyone who\'s joined us so far. Your trust and enthusiasm keep us motivated to make Langzy better every single day.')">
                     <div class="text-center mb-4 md:mb-6">
-                        <div class="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 mx-auto mb-3 md:mb-4 rounded-full overflow-hidden shadow-lg ring-2 md:ring-4 ring-white">
-                            <img src="{{ asset('WhatsApp Image 2025-11-01 at 10.09.07.jpeg') }}" alt="Subham Pudasaini" class="w-full h-full object-cover object-top">
+                        <div class="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 mx-auto mb-3 md:mb-4 rounded-full overflow-hidden shadow-lg ring-2 md:ring-4 ring-white bg-gray-200">
+                            <img src="{{ asset('WhatsApp Image 2025-11-01 at 10.09.07.jpeg') }}" alt="Subham Pudasaini" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-langzy-blue text-3xl font-bold\'>SP</div>'">
                         </div>
                         <h3 class="text-xl sm:text-2xl font-bold text-langzy-text mb-2">Subham Pudasaini</h3>
                         <p class="text-base sm:text-lg font-semibold text-langzy-blue mb-3 md:mb-4">Co-founder & Developer</p>
@@ -91,8 +91,8 @@
                 <!-- Saroj Phuyal - Senior Counsellor -->
                 <div class="bg-gradient-to-br from-blue-50 to-langzy-light rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="showTeamMemberModal('Saroj Phuyal', 'Senior Counsellor', '{{ asset('WhatsApp Image 2025-11-01 at 10.09.08.jpeg') }}', 'Experienced counselor dedicated to guiding students on their German language learning journey. Committed to providing personalized support and helping learners achieve their educational goals with expertise and care.')">
                     <div class="text-center mb-4 md:mb-6">
-                        <div class="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 mx-auto mb-3 md:mb-4 rounded-full overflow-hidden shadow-lg ring-2 md:ring-4 ring-white">
-                            <img src="{{ asset('WhatsApp Image 2025-11-01 at 10.09.08.jpeg') }}" alt="Saroj Phuyal" class="w-full h-full object-cover object-center">
+                        <div class="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 mx-auto mb-3 md:mb-4 rounded-full overflow-hidden shadow-lg ring-2 md:ring-4 ring-white bg-gray-200">
+                            <img src="{{ asset('WhatsApp Image 2025-11-01 at 10.09.08.jpeg') }}" alt="Saroj Phuyal" class="w-full h-full object-cover object-center" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-langzy-blue text-3xl font-bold\'>SP</div>'">
                         </div>
                         <h3 class="text-xl sm:text-2xl font-bold text-langzy-text mb-2">Saroj Phuyal</h3>
                         <p class="text-base sm:text-lg font-semibold text-langzy-blue mb-3 md:mb-4">Senior Counsellor</p>
@@ -107,8 +107,8 @@
                 <!-- Mohit Kumawat - Counsellor -->
                 <div class="bg-gradient-to-br from-langzy-light to-blue-50 rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="showTeamMemberModal('Mohit Kumawat', 'Counsellor', '{{ asset('WhatsApp Image 2025-11-01 at 10.09.08 (1).jpeg') }}', 'Passionate counselor helping students navigate their path to German language proficiency. Focused on understanding individual needs and providing the support necessary for academic success and personal growth.')">
                     <div class="text-center mb-4 md:mb-6">
-                        <div class="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 mx-auto mb-3 md:mb-4 rounded-full overflow-hidden shadow-lg ring-2 md:ring-4 ring-white">
-                            <img src="{{ asset('WhatsApp Image 2025-11-01 at 10.09.08 (1).jpeg') }}" alt="Mohit Kumawat" class="w-full h-full object-cover object-center">
+                        <div class="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 mx-auto mb-3 md:mb-4 rounded-full overflow-hidden shadow-lg ring-2 md:ring-4 ring-white bg-gray-200">
+                            <img src="{{ asset('WhatsApp Image 2025-11-01 at 10.09.08 (1).jpeg') }}" alt="Mohit Kumawat" class="w-full h-full object-cover object-center" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-langzy-blue text-3xl font-bold\'>MK</div>'">
                         </div>
                         <h3 class="text-xl sm:text-2xl font-bold text-langzy-text mb-2">Mohit Kumawat</h3>
                         <p class="text-base sm:text-lg font-semibold text-langzy-blue mb-3 md:mb-4">Counsellor</p>
@@ -195,10 +195,20 @@
                 objectPosition = 'center';
             }
             
+            let initials = '';
+            if (name.includes('Ashok')) initials = 'AD';
+            else if (name.includes('Subham')) initials = 'SP';
+            else if (name.includes('Saroj')) initials = 'SP';
+            else if (name.includes('Mohit')) initials = 'MK';
+            else if (name.includes('Sanjog')) initials = 'SP';
+            
             const imageHtml = photoUrl ? 
-                `<img src="${photoUrl}" alt="${name}" class="w-full h-auto rounded-lg shadow-lg object-cover" style="max-height: ${isMobile ? '300px' : '500px'}; object-position: ${objectPosition};">` :
+                `<img src="${photoUrl}" alt="${name}" class="w-full h-auto rounded-lg shadow-lg object-cover" style="max-height: ${isMobile ? '300px' : '500px'}; object-position: ${objectPosition};" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">` +
+                `<div class="w-full rounded-lg bg-gradient-to-br from-langzy-blue to-blue-600 flex items-center justify-center text-white text-6xl font-bold shadow-lg hidden" style="min-height: ${isMobile ? '300px' : '500px'};">
+                    ${initials}
+                </div>` :
                 `<div class="w-full h-full rounded-lg bg-gradient-to-br from-langzy-blue to-blue-600 flex items-center justify-center text-white text-6xl font-bold shadow-lg" style="min-height: ${isMobile ? '300px' : '500px'};">
-                    SP
+                    ${initials}
                 </div>`;
             
             const htmlContent = `
