@@ -45,11 +45,14 @@
     <!-- Hero Section -->
     @include('components.hero-section')
 
-    <!-- Pricing Section -->
-    @include('components.pricing-section')
+    <!-- Course Curriculum Section -->
+    @include('components.curriculum-section')
 
     <!-- Features Section -->
     @include('components.features-section')
+
+    <!-- Pricing Section -->
+    @include('components.pricing-section')
 
     <!-- Testimonials Section -->
     @include('components.testimonials-section')

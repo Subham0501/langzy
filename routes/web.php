@@ -11,6 +11,8 @@ use App\Http\Controllers\TeacherRatingController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/our-team', [HomeController::class, 'ourTeam'])->name('our-team');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
+Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/terms-of-service', function () {
     return view('terms-of-service');
 })->name('terms');
