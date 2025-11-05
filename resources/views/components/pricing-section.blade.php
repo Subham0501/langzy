@@ -13,7 +13,7 @@
             <!-- A1 Level -->
             <div class="bg-white rounded-lg border border-gray-200 p-6 hover:border-langzy-blue hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer" onclick="selectPlan(this)">
                 <h3 class="text-2xl font-bold text-gray-800 mb-2">A1</h3>
-                <p class="text-lg text-gray-600 mb-4">₹10,000</p>
+                <p class="text-lg text-gray-600 mb-4">Rs 10,000</p>
                 <div class="mb-6">
                     <span class="inline-block bg-gray-100 text-langzy-blue text-sm px-3 py-1 rounded-full border border-langzy-blue">
                         Beginner Level
@@ -51,7 +51,7 @@
             <!-- A2 Level -->
             <div class="bg-white rounded-lg border border-gray-200 p-6 hover:border-langzy-blue hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer" onclick="selectPlan(this)">
                 <h3 class="text-2xl font-bold text-gray-800 mb-2">A2</h3>
-                <p class="text-lg text-gray-600 mb-4">₹11,000</p>
+                <p class="text-lg text-gray-600 mb-4">Rs 11,000</p>
                 <div class="mb-6">
                     <span class="inline-block bg-gray-100 text-langzy-blue text-sm px-3 py-1 rounded-full border border-langzy-blue">
                         Elementary Level
@@ -89,7 +89,7 @@
             <!-- B1 Level -->
             <div class="bg-white rounded-lg border border-gray-200 p-6 hover:border-langzy-blue hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer" onclick="selectPlan(this)">
                 <h3 class="text-2xl font-bold text-gray-800 mb-2">B1</h3>
-                <p class="text-lg text-gray-600 mb-4">₹12,000</p>
+                <p class="text-lg text-gray-600 mb-4">Rs 12,000</p>
                 <div class="mb-6">
                     <span class="inline-block bg-gray-100 text-langzy-blue text-sm px-3 py-1 rounded-full border border-langzy-blue">
                         Intermediate Level
