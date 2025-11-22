@@ -63,6 +63,9 @@
     <!-- Counselling Section -->
     @include('components.counselling-section')
 
+    <!-- FAQ Section -->
+    @include('components.faq-section')
+
     <!-- Call to Action Section -->
     @include('components.cta-section')
 
