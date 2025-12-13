@@ -81,7 +81,9 @@ Route::get('/sitemap.xml', function () {
     
     $xml .= "</urlset>";
     
-    return response($xml, 200)->header('Content-Type', 'application/xml');
+    return response($xml, 200)
+        ->header('Content-Type', 'application/xml; charset=utf-8')
+        ->header('Cache-Control', 'public, max-age=3600');
 })->name('sitemap');
 
 // Course Material Routes
