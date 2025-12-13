@@ -4,8 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>FAQ - Langzy</title>
-    <meta name="description" content="Frequently asked questions about Langzy - your questions answered about our German language courses, pricing, teachers, and more.">
+    
+    @php
+        $faqStructuredData = [
+            '@context' => 'https://schema.org',
+            '@type' => 'FAQPage',
+            'mainEntity' => [
+                [
+                    '@type' => 'Question',
+                    'name' => 'What German language levels do you offer?',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => 'We offer comprehensive German language courses for three levels: A1 (Beginner), A2 (Elementary), and B1 (Intermediate). Each level is designed to build upon the previous one, ensuring a structured learning path from beginner to confident speaker.'
+                    ]
+                ],
+                [
+                    '@type' => 'Question',
+                    'name' => 'What are the prices for your courses?',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => 'Our course pricing is as follows: A1 level at Rs8,000 (discounted from Rs10,000), A2 level at Rs10,000 (discounted from Rs11,000), and B1 level at Rs11,000 (discounted from Rs13,000). All prices include access to course materials, expert instruction, and ongoing support.'
+                    ]
+                ],
+                [
+                    '@type' => 'Question',
+                    'name' => 'Do you offer a free trial?',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => 'Yes, we offer a free trial to help you experience our teaching methods and course structure before committing to a full course. Contact our counsellors to learn more about our free trial options and how to get started.'
+                    ]
+                ],
+                [
+                    '@type' => 'Question',
+                    'name' => 'Who are your teachers?',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => 'Our teachers are certified German language experts from around the world, each bringing years of teaching experience and cultural insights. They are passionate about helping students succeed and are dedicated to creating an engaging and supportive learning environment.'
+                    ]
+                ],
+                [
+                    '@type' => 'Question',
+                    'name' => 'How do I get started?',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => 'Getting started is easy! Simply contact one of our counsellors through WhatsApp or our contact page. They will help you choose the right course level based on your current German language skills and learning goals. You can also explore our course materials to get a feel for our teaching style.'
+                    ]
+                ]
+            ]
+        ];
+        
+        $structuredData = [
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'WebPage',
+                    '@id' => url('/faq') . '#webpage',
+                    'url' => url('/faq'),
+                    'name' => 'FAQ - Langzy',
+                    'description' => 'Frequently asked questions about Langzy - your questions answered about our German language courses, pricing, teachers, and more.',
+                    'isPartOf' => [
+                        '@id' => url('/') . '#website'
+                    ]
+                ],
+                $faqStructuredData
+            ]
+        ];
+    @endphp
+    
+    @include('components.seo-meta', [
+        'title' => 'FAQ - Frequently Asked Questions About Langzy German Courses | Langzy',
+        'description' => 'Frequently asked questions about Langzy - your questions answered about our German language courses, pricing, teachers, support, and more. Get all the information you need to start learning German.',
+        'keywords' => 'Langzy FAQ, German course questions, Langzy pricing, German language course FAQ, learn German FAQ, Langzy support, German course information',
+        'image' => asset('Group 36.png'),
+        'url' => url('/faq'),
+        'type' => 'website',
+        'structuredData' => $structuredData,
+        'canonical' => url('/faq')
+    ])
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('Group 36.png') }}">

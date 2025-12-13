@@ -3,7 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Langzy</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    @php
+        $structuredData = [
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'ContactPage',
+                    '@id' => url('/contact') . '#webpage',
+                    'url' => url('/contact'),
+                    'name' => 'Contact Us - Langzy',
+                    'description' => 'Get in touch with Langzy - your trusted partner in mastering the German language. Contact us via email, phone, or visit us in Kathmandu, Nepal.',
+                    'isPartOf' => [
+                        '@id' => url('/') . '#website'
+                    ]
+                ],
+                [
+                    '@type' => 'Organization',
+                    'name' => 'Langzy',
+                    'url' => url('/'),
+                    'contactPoint' => [
+                        [
+                            '@type' => 'ContactPoint',
+                            'telephone' => '+977-9701369495',
+                            'contactType' => 'Customer Service',
+                            'email' => 'langzy76@gmail.com',
+                            'areaServed' => 'Worldwide',
+                            'availableLanguage' => ['English', 'German', 'Nepali']
+                        ]
+                    ],
+                    'address' => [
+                        '@type' => 'PostalAddress',
+                        'addressLocality' => 'Kathmandu',
+                        'addressCountry' => 'Nepal'
+                    ]
+                ]
+            ]
+        ];
+    @endphp
+    
+    @include('components.seo-meta', [
+        'title' => 'Contact Us - Get in Touch with Langzy German Language School | Langzy',
+        'description' => 'Get in touch with Langzy - your trusted partner in mastering the German language. Contact us via email at langzy76@gmail.com, phone +977-9701369495, or visit us in Kathmandu, Nepal. We\'re here to help you start your German learning journey.',
+        'keywords' => 'contact Langzy, Langzy contact, German language school contact, Langzy email, Langzy phone, contact German course, Langzy support',
+        'image' => asset('Group 36.png'),
+        'url' => url('/contact'),
+        'type' => 'website',
+        'structuredData' => $structuredData,
+        'canonical' => url('/contact')
+    ])
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('Group 36.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('Group 36.png') }}">
+    
     @include('components.shared-assets')
 </head>
 <body class="font-inter bg-white">

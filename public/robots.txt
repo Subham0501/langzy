@@ -1,2 +1,20 @@
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap location (update with your actual domain)
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# Disallow admin and private areas
+User-agent: *
+Disallow: /admin/
+Disallow: /storage/
+Disallow: /vendor/
+
+# Allow important pages
+User-agent: *
+Allow: /
+Allow: /our-team
+Allow: /about-us
+Allow: /faq
+Allow: /contact
+Allow: /course-material

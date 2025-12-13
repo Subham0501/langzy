@@ -4,8 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Our Team - Langzy</title>
-    <meta name="description" content="Meet our experienced German language experts and teachers from around the world.">
+    
+    @php
+        $teamMembers = [
+            [
+                'name' => 'Ashok Dhungana',
+                'jobTitle' => 'Chief Executive Officer',
+                'description' => 'Visionary leader driving Langzy\'s mission to make German language learning accessible to everyone. With a passion for education and technology, dedicated to transforming how students learn languages.',
+                'image' => 'https://pub-c39269ac19d748e6a459d6721369c9d3.r2.dev/WhatsApp%20Image%202025-11-01%20at%2010.09.24.jpeg'
+            ],
+            [
+                'name' => 'Subham Pudasaini',
+                'jobTitle' => 'Co-founder & Developer',
+                'description' => 'Tech enthusiast and full-stack developer building the future of language learning. Combining innovation with user experience to create seamless educational platforms that empower learners worldwide.',
+                'image' => 'https://pub-c39269ac19d748e6a459d6721369c9d3.r2.dev/WhatsApp%20Image%202025-11-01%20at%2010.09.07.jpeg'
+            ],
+            [
+                'name' => 'Saroj Phuyal',
+                'jobTitle' => 'Senior Counsellor',
+                'description' => 'Experienced counselor dedicated to guiding students on their German language learning journey. Committed to providing personalized support and helping learners achieve their educational goals with expertise and care.',
+                'image' => 'https://pub-c39269ac19d748e6a459d6721369c9d3.r2.dev/WhatsApp%20Image%202025-11-01%20at%2010.09.08.jpeg'
+            ],
+            [
+                'name' => 'Mohit Kumawat',
+                'jobTitle' => 'Counsellor',
+                'description' => 'Passionate counselor helping students navigate their path to German language proficiency. Focused on understanding individual needs and providing the support necessary for academic success and personal growth.',
+                'image' => 'https://pub-c39269ac19d748e6a459d6721369c9d3.r2.dev/WhatsApp%20Image%202025-11-01%20at%2010.09.08%20(1).jpeg'
+            ],
+            [
+                'name' => 'Sanjog Paudel',
+                'jobTitle' => 'Counsellor',
+                'description' => 'Dedicated counselor committed to supporting students throughout their German language learning journey. Providing guidance, encouragement, and personalized assistance to help learners overcome challenges and reach their full potential.',
+                'image' => ''
+            ]
+        ];
+        
+        $structuredData = [
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'Organization',
+                    '@id' => url('/our-team') . '#organization',
+                    'name' => 'Langzy',
+                    'url' => url('/'),
+                    'logo' => [
+                        '@type' => 'ImageObject',
+                        'url' => asset('Group 36.png')
+                    ],
+                    'description' => 'Meet our experienced German language experts and teachers from around the world.',
+                    'employee' => array_map(function($member) {
+                        return [
+                            '@type' => 'Person',
+                            'name' => $member['name'],
+                            'jobTitle' => $member['jobTitle'],
+                            'description' => $member['description'],
+                            'image' => !empty($member['image']) ? $member['image'] : null,
+                            'worksFor' => [
+                                '@type' => 'Organization',
+                                'name' => 'Langzy'
+                            ]
+                        ];
+                    }, $teamMembers)
+                ],
+                [
+                    '@type' => 'WebPage',
+                    '@id' => url('/our-team') . '#webpage',
+                    'url' => url('/our-team'),
+                    'name' => 'Our Team - Langzy',
+                    'description' => 'Meet our experienced German language experts and teachers from around the world. Get to know the passionate educators and experts dedicated to helping you master the German language.',
+                    'isPartOf' => [
+                        '@id' => url('/') . '#website'
+                    ],
+                    'about' => [
+                        '@id' => url('/our-team') . '#organization'
+                    ]
+                ]
+            ]
+        ];
+    @endphp
+    
+    @include('components.seo-meta', [
+        'title' => 'Our Team - Meet Langzy\'s German Language Experts | Langzy',
+        'description' => 'Meet our experienced German language experts and teachers from around the world. Get to know the passionate educators and experts dedicated to helping you master the German language at Langzy.',
+        'keywords' => 'Langzy team, German language teachers, German tutors, Langzy staff, German language experts, learn German teachers, German course instructors, Langzy founders, German language counselors',
+        'image' => asset('Group 36.png'),
+        'url' => url('/our-team'),
+        'type' => 'website',
+        'structuredData' => $structuredData,
+        'canonical' => url('/our-team')
+    ])
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('Group 36.png') }}">

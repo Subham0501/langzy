@@ -37,7 +37,7 @@
             <!-- Logo/Brand -->
             <div class="mb-10 relative flex flex-col items-center justify-center">
                 <div class="relative">
-                    <img src="{{ asset('Group 36.png') }}" alt="Langzy Logo" class="mb-4 max-w-xs md:max-w-md drop-shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('Group 36.png') }}" alt="Langzy - German Language Learning Platform Logo" class="mb-4 max-w-xs md:max-w-md drop-shadow-2xl transform hover:scale-105 transition-transform duration-300">
                     <div class="absolute inset-0 bg-langzy-blue/20 blur-2xl -z-10"></div>
                 </div>
             </div>

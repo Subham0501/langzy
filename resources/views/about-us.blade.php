@@ -4,8 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>About Us - Langzy</title>
-    <meta name="description" content="Learn about Langzy - your trusted partner in mastering the German language. Discover our mission, values, and commitment to excellence.">
+    
+    @php
+        $structuredData = [
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'AboutPage',
+                    '@id' => url('/about-us') . '#webpage',
+                    'url' => url('/about-us'),
+                    'name' => 'About Us - Langzy',
+                    'description' => 'Learn about Langzy - your trusted partner in mastering the German language. Discover our mission, values, and commitment to excellence.',
+                    'isPartOf' => [
+                        '@id' => url('/') . '#website'
+                    ],
+                    'about' => [
+                        '@type' => 'Organization',
+                        'name' => 'Langzy',
+                        'description' => 'Online German language learning platform empowering language learners worldwide to master German through innovative teaching methods, expert guidance, and a passion for education.'
+                    ]
+                ],
+                [
+                    '@type' => 'Organization',
+                    'name' => 'Langzy',
+                    'url' => url('/'),
+                    'logo' => [
+                        '@type' => 'ImageObject',
+                        'url' => asset('Group 36.png')
+                    ],
+                    'description' => 'Empowering language learners worldwide to master German through innovative teaching methods, expert guidance, and a passion for education.',
+                    'foundingDate' => '2024',
+                    'mission' => 'To make German language learning accessible, engaging, and effective for learners of all levels. We believe that mastering a new language opens doors to new opportunities, cultures, and connections.'
+                ]
+            ]
+        ];
+    @endphp
+    
+    @include('components.seo-meta', [
+        'title' => 'About Us - Learn About Langzy German Language School | Langzy',
+        'description' => 'Learn about Langzy - your trusted partner in mastering the German language. Discover our mission, values, commitment to excellence, and how we help thousands of students learn German online.',
+        'keywords' => 'about Langzy, Langzy German school, German language learning platform, learn about Langzy, Langzy mission, German language education, online German courses about',
+        'image' => asset('Group 36.png'),
+        'url' => url('/about-us'),
+        'type' => 'website',
+        'structuredData' => $structuredData,
+        'canonical' => url('/about-us')
+    ])
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('Group 36.png') }}">
