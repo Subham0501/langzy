@@ -30,7 +30,7 @@
             
             <!-- Main Headline -->
             <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-langzy-text mb-6 leading-tight">
-                Grow your words.<br>
+                <span class="bg-gradient-to-r from-langzy-blue to-blue-600 bg-clip-text text-transparent">Langzy</span> - Grow your words.<br>
                 <span class="bg-gradient-to-r from-langzy-blue to-blue-600 bg-clip-text text-transparent">Expand your world.</span>
             </h1>
             
@@ -44,7 +44,7 @@
             
             <!-- Description -->
             <p class="text-xl md:text-2xl text-langzy-gray mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
-                Master new languages with expert tutors, structured courses, and personalized learning paths. 
+                <span class="text-langzy-text font-semibold">Langzy</span> helps you master German with expert tutors, structured courses, and personalized learning paths. 
                 <span class="text-langzy-text font-semibold">Join thousands of successful language learners worldwide.</span>
             </p>
             
