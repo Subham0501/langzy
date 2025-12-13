@@ -48,6 +48,11 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Langzy">
 
+<!-- Google Search Console Verification -->
+@if(env('GOOGLE_SEARCH_CONSOLE_VERIFICATION'))
+<meta name="google-site-verification" content="{{ env('GOOGLE_SEARCH_CONSOLE_VERIFICATION') }}" />
+@endif
+
 <!-- Structured Data (JSON-LD) -->
 @if($structuredData)
 <script type="application/ld+json">
