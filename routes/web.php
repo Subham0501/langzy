@@ -20,6 +20,70 @@ Route::get('/privacy-policy', function () {
     return view('privacy-policy');
 })->name('privacy');
 
+// Sitemap Route
+Route::get('/sitemap.xml', function () {
+    $baseUrl = url('/');
+    $lastmod = date('Y-m-d');
+    
+    $urls = [
+        [
+            'loc' => $baseUrl,
+            'lastmod' => $lastmod,
+            'changefreq' => 'weekly',
+            'priority' => '1.0'
+        ],
+        [
+            'loc' => route('our-team'),
+            'lastmod' => $lastmod,
+            'changefreq' => 'monthly',
+            'priority' => '0.8'
+        ],
+        [
+            'loc' => route('about-us'),
+            'lastmod' => $lastmod,
+            'changefreq' => 'monthly',
+            'priority' => '0.8'
+        ],
+        [
+            'loc' => route('faq'),
+            'lastmod' => $lastmod,
+            'changefreq' => 'monthly',
+            'priority' => '0.7'
+        ],
+        [
+            'loc' => route('contact'),
+            'lastmod' => $lastmod,
+            'changefreq' => 'monthly',
+            'priority' => '0.7'
+        ],
+        [
+            'loc' => route('course-material.index'),
+            'lastmod' => $lastmod,
+            'changefreq' => 'weekly',
+            'priority' => '0.9'
+        ],
+    ];
+    
+    $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' . "\n";
+    $xml .= '        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' . "\n";
+    $xml .= '        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9' . "\n";
+    $xml .= '        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' . "\n";
+    
+    foreach ($urls as $url) {
+        $xml .= "    <url>\n";
+        $xml .= "        <loc>" . htmlspecialchars($url['loc']) . "</loc>\n";
+        $xml .= "        <lastmod>" . $url['lastmod'] . "</lastmod>\n";
+        $xml .= "        <changefreq>" . $url['changefreq'] . "</changefreq>\n";
+        $xml .= "        <priority>" . $url['priority'] . "</priority>\n";
+        $xml .= "    </url>\n";
+    }
+    
+    $xml .= "</urlset>";
+    
+    return response($xml, 200)->header('Content-Type', 'application/xml');
+})->name('sitemap');
+
 // Course Material Routes
 Route::get('/course-material', [CourseMaterialController::class, 'index'])->name('course-material.index');
 Route::get('/course-material/category/{category}', [CourseMaterialController::class, 'showCategory'])->name('course-material.category');
