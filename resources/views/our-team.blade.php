@@ -39,9 +39,31 @@
             ]
         ];
         
+        // Create individual Person structured data for better SEO
+        $personStructuredData = array_map(function($member) {
+            $personData = [
+                '@type' => 'Person',
+                'name' => $member['name'],
+                'jobTitle' => $member['jobTitle'],
+                'description' => $member['description'],
+                'worksFor' => [
+                    '@type' => 'Organization',
+                    'name' => 'Langzy',
+                    'url' => url('/')
+                ],
+                'url' => url('/our-team') . '#team-member-' . strtolower(str_replace(' ', '-', $member['name'])))
+            ];
+            
+            if (!empty($member['image'])) {
+                $personData['image'] = $member['image'];
+            }
+            
+            return $personData;
+        }, $teamMembers);
+        
         $structuredData = [
             '@context' => 'https://schema.org',
-            '@graph' => [
+            '@graph' => array_merge([
                 [
                     '@type' => 'Organization',
                     '@id' => url('/our-team') . '#organization',
@@ -51,7 +73,7 @@
                         '@type' => 'ImageObject',
                         'url' => asset('Group 36.png')
                     ],
-                    'description' => 'Meet our experienced German language experts and teachers from around the world.',
+                    'description' => 'Meet our experienced German language experts and teachers from around the world. Our team includes Ashok Dhungana (CEO), Subham Pudasaini (Co-founder & Developer), and expert counselors dedicated to helping you master German.',
                     'employee' => array_map(function($member) {
                         return [
                             '@type' => 'Person',
@@ -70,8 +92,8 @@
                     '@type' => 'WebPage',
                     '@id' => url('/our-team') . '#webpage',
                     'url' => url('/our-team'),
-                    'name' => 'Our Team - Langzy',
-                    'description' => 'Meet our experienced German language experts and teachers from around the world. Get to know the passionate educators and experts dedicated to helping you master the German language.',
+                    'name' => 'Our Team - Meet Ashok Dhungana, Subham Pudasaini & Langzy Team | Langzy',
+                    'description' => 'Meet Langzy\'s team including CEO Ashok Dhungana, Co-founder Subham Pudasaini, and our expert German language counselors. Get to know the passionate educators dedicated to helping you master the German language.',
                     'isPartOf' => [
                         '@id' => url('/') . '#website'
                     ],
@@ -79,14 +101,14 @@
                         '@id' => url('/our-team') . '#organization'
                     ]
                 ]
-            ]
+            ], $personStructuredData)
         ];
     @endphp
     
     @include('components.seo-meta', [
-        'title' => 'Our Team - Meet Langzy\'s German Language Experts | Langzy',
-        'description' => 'Meet our experienced German language experts and teachers from around the world. Get to know the passionate educators and experts dedicated to helping you master the German language at Langzy.',
-        'keywords' => 'Langzy team, German language teachers, German tutors, Langzy staff, German language experts, learn German teachers, German course instructors, Langzy founders, German language counselors',
+        'title' => 'Our Team - Meet Ashok Dhungana, Subham Pudasaini & Langzy Team | Langzy',
+        'description' => 'Meet Langzy\'s team including CEO Ashok Dhungana, Co-founder Subham Pudasaini, and expert German language counselors. Get to know the passionate educators dedicated to helping you master the German language at Langzy.',
+        'keywords' => 'Ashok Dhungana, Subham Pudasaini, Langzy team, Langzy founders, German language teachers, German tutors, Langzy staff, German language experts, learn German teachers, German course instructors, German language counselors, Ashok Dhungana CEO, Subham Pudasaini developer, Langzy co-founder',
         'image' => asset('Group 36.png'),
         'url' => url('/our-team'),
         'type' => 'website',
@@ -94,9 +116,7 @@
         'canonical' => url('/our-team')
     ])
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('Group 36.png') }}">
-    <link rel="shortcut icon" type="image/png" href="{{ asset('Group 36.png') }}">
+    <!-- Favicon is included in seo-meta component -->
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -147,7 +167,7 @@
             </div>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">Meet Our Team</h1>
             <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
-                Get to know the passionate educators and experts dedicated to helping you master the German language.
+                Get to know our passionate team including <strong>Ashok Dhungana</strong>, <strong>Subham Pudasaini</strong>, and expert educators dedicated to helping you master the German language.
             </p>
         </div>
     </section>
@@ -161,6 +181,13 @@
         </div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- SEO-friendly introduction text -->
+            <div class="mb-12 text-center">
+                <p class="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                    Meet the Langzy team: <strong>Ashok Dhungana</strong> serves as our CEO, leading our mission to make German language learning accessible. <strong>Subham Pudasaini</strong> is our Co-founder & Developer, building innovative learning platforms. Together with our expert counselors, we're committed to your German language success.
+                </p>
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
                 <!-- Ashok Dhungana - CEO -->
                 <div class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-100 hover:border-langzy-blue/30 transform hover:-translate-y-2 cursor-pointer relative overflow-hidden" onclick="showTeamMemberModal('Ashok Dhungana', 'CEO', 'https://pub-c39269ac19d748e6a459d6721369c9d3.r2.dev/WhatsApp%20Image%202025-11-01%20at%2010.09.24.jpeg', 'At Langzy, our main focus has always been on helping learners truly understand and enjoy the German language. Teaching isn\'t just about grammar or vocabulary — it\'s about building confidence and creating real connections through communication.\\n\\nEvery lesson we design aims to make learning German practical, interesting, and fun. I believe that when students feel comfortable and inspired, real progress begins.\\n\\nI\'m proud to see how Langzy has grown into a community where learning feels natural and meaningful. Thank you to all our learners for being part of this journey — your dedication is what keeps us moving forward.')">
@@ -169,18 +196,18 @@
                         <div class="text-center mb-6">
                             <div class="relative inline-block mb-6">
                                 <div class="w-32 h-32 mx-auto rounded-2xl overflow-hidden shadow-xl ring-4 ring-langzy-blue/20 group-hover:ring-langzy-blue/40 transition-all">
-                                    <img src="https://pub-c39269ac19d748e6a459d6721369c9d3.r2.dev/WhatsApp%20Image%202025-11-01%20at%2010.09.24.jpeg" alt="Ashok Dhungana" class="w-full h-full object-cover" style="object-position: left center;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-langzy-blue to-blue-600 text-white text-4xl font-bold\'>AD</div>'">
+                                    <img src="https://pub-c39269ac19d748e6a459d6721369c9d3.r2.dev/WhatsApp%20Image%202025-11-01%20at%2010.09.24.jpeg" alt="Ashok Dhungana - CEO of Langzy German Language Learning Platform" class="w-full h-full object-cover" style="object-position: left center;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-langzy-blue to-blue-600 text-white text-4xl font-bold\'>AD</div>'" id="team-member-ashok-dhungana">
                                 </div>
                                 <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
                                     CEO
                                 </div>
                             </div>
-                            <h3 class="text-2xl font-bold text-langzy-text mb-2">Ashok Dhungana</h3>
+                            <h2 class="text-2xl font-bold text-langzy-text mb-2">Ashok Dhungana</h2>
                             <p class="text-lg font-semibold text-langzy-blue mb-4">Chief Executive Officer</p>
                         </div>
                         <div class="border-t border-gray-100 pt-6">
                             <p class="text-gray-700 text-center leading-relaxed text-lg">
-                                Visionary leader driving Langzy's mission to make German language learning accessible to everyone. With a passion for education and technology, dedicated to transforming how students learn languages.
+                                <strong>Ashok Dhungana</strong> is the visionary CEO of Langzy, driving our mission to make German language learning accessible to everyone. With a passion for education and technology, <strong>Ashok Dhungana</strong> is dedicated to transforming how students learn languages.
                             </p>
                         </div>
                     </div>
@@ -193,18 +220,18 @@
                         <div class="text-center mb-6">
                             <div class="relative inline-block mb-6">
                                 <div class="w-32 h-32 mx-auto rounded-2xl overflow-hidden shadow-xl ring-4 ring-langzy-blue/20 group-hover:ring-langzy-blue/40 transition-all">
-                                    <img src="https://pub-c39269ac19d748e6a459d6721369c9d3.r2.dev/WhatsApp%20Image%202025-11-01%20at%2010.09.07.jpeg" alt="Subham Pudasaini" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-langzy-blue to-blue-600 text-white text-4xl font-bold\'>SP</div>'">
+                                    <img src="https://pub-c39269ac19d748e6a459d6721369c9d3.r2.dev/WhatsApp%20Image%202025-11-01%20at%2010.09.07.jpeg" alt="Subham Pudasaini - Co-founder & Developer of Langzy German Language Learning Platform" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-langzy-blue to-blue-600 text-white text-4xl font-bold\'>SP</div>'" id="team-member-subham-pudasaini">
                                 </div>
                                 <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
                                     Co-founder
                                 </div>
                             </div>
-                            <h3 class="text-2xl font-bold text-langzy-text mb-2">Subham Pudasaini</h3>
+                            <h2 class="text-2xl font-bold text-langzy-text mb-2">Subham Pudasaini</h2>
                             <p class="text-lg font-semibold text-langzy-blue mb-4">Co-founder & Developer</p>
                         </div>
                         <div class="border-t border-gray-100 pt-6">
                             <p class="text-gray-700 text-center leading-relaxed text-lg">
-                                Tech enthusiast and full-stack developer building the future of language learning. Combining innovation with user experience to create seamless educational platforms that empower learners worldwide.
+                                <strong>Subham Pudasaini</strong> is the Co-founder & Developer of Langzy, a tech enthusiast and full-stack developer building the future of language learning. <strong>Subham Pudasaini</strong> combines innovation with user experience to create seamless educational platforms that empower learners worldwide.
                             </p>
                         </div>
                     </div>

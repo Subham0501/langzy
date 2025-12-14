@@ -53,6 +53,13 @@
 <meta name="google-site-verification" content="{{ env('GOOGLE_SEARCH_CONSOLE_VERIFICATION') }}" />
 @endif
 
+<!-- Favicon Links - Google uses these for search results -->
+<link rel="icon" type="image/png" sizes="192x192" href="{{ asset('Group 36.png') }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('Group 36.png') }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('Group 36.png') }}">
+<link rel="shortcut icon" href="{{ asset('Group 36.png') }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('Group 36.png') }}">
+
 <!-- Structured Data (JSON-LD) -->
 @if($structuredData)
 <script type="application/ld+json">

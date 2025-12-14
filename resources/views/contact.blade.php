@@ -54,9 +54,7 @@
         'canonical' => url('/contact')
     ])
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('Group 36.png') }}">
-    <link rel="shortcut icon" type="image/png" href="{{ asset('Group 36.png') }}">
+    <!-- Favicon is included in seo-meta component -->
     
     @include('components.shared-assets')
 </head>
