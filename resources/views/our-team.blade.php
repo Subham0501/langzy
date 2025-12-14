@@ -51,7 +51,7 @@
                     'name' => 'Langzy',
                     'url' => url('/')
                 ],
-                'url' => url('/our-team') . '#team-member-' . strtolower(str_replace(' ', '-', $member['name'])))
+                'url' => url('/our-team') . '#team-member-' . strtolower(str_replace(' ', '-', $member['name']))
             ];
             
             if (!empty($member['image'])) {
