@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('counsellors', function (Blueprint $table) {
-            $table->integer('priority')->default(0)->after('status');
+            if (!Schema::hasColumn('counsellors', 'priority')) {
+                $table->integer('priority')->default(0)->after('is_active');
+            }
         });
     }
 
@@ -22,7 +24,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('counsellors', function (Blueprint $table) {
-            $table->dropColumn('priority');
+            if (Schema::hasColumn('counsellors', 'priority')) {
+                $table->dropColumn('priority');
+            }
         });
     }
 };
