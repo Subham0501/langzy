@@ -12,6 +12,27 @@ use App\Http\Controllers\Admin\InformationController as AdminInformationControll
 
 Route::get('/language/{language}', [HomeController::class, 'switchLanguage'])->name('language.switch');
 
+// Temporary route to create storage symlink - DELETE AFTER USE
+Route::get('/create-storage-link', function () {
+    try {
+        $target = storage_path('app/public');
+        $link = public_path('storage');
+        
+        if (file_exists($link)) {
+            return 'Storage link already exists at: ' . $link;
+        }
+        
+        if (!file_exists($target)) {
+            mkdir($target, 0755, true);
+        }
+        
+        symlink($target, $link);
+        return 'Storage link created successfully!';
+    } catch (\Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
+});
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/our-team', [HomeController::class, 'ourTeam'])->name('our-team');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');

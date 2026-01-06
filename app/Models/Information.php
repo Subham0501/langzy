@@ -57,7 +57,9 @@ class Information extends Model
     public function getFileUrlAttribute()
     {
         if ($this->file_path) {
-            return asset('storage/' . $this->file_path);
+            // Use 'uploads' for shared hosting where storage symlink doesn't work
+            $folder = config('app.storage_url', 'storage');
+            return asset($folder . '/' . $this->file_path);
         }
         return null;
     }

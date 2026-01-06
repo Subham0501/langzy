@@ -56,6 +56,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Storage URL Path
+    |--------------------------------------------------------------------------
+    |
+    | The public path for accessing uploaded files. Use 'storage' for local
+    | development with symlink, or 'uploads' for shared hosting.
+    |
+    */
+
+    'storage_url' => env('STORAGE_URL', 'storage'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------
     |
