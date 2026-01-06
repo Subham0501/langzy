@@ -113,7 +113,7 @@
 </head>
 <body class="font-inter">
     <!-- Navigation -->
-    @include('components.nav')
+    @include('components.simple-nav')
     
     <!-- Hero Section -->
     <section class="py-24 bg-gradient-to-br from-langzy-blue via-blue-500 to-blue-600 relative overflow-hidden">

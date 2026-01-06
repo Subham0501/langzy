@@ -20,58 +20,19 @@
     <!-- Hero Content -->
     <div class="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 py-20">
         <div class="max-w-5xl mx-auto text-center">
-            <!-- Language Selector -->
-            <div class="mb-8">
-                <div class="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 mb-4 shadow-sm border border-gray-200/50">
-                    <svg class="w-5 h-5 text-langzy-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
-                    </svg>
-                    <span class="text-sm font-semibold text-langzy-text">Choose Your Language</span>
-                </div>
-                
-                <div class="flex flex-wrap justify-center gap-3 md:gap-4">
-                    <!-- German -->
-                    <a href="{{ route('language.switch', 'german') }}" class="group relative flex items-center gap-3 px-5 py-3 rounded-2xl transition-all duration-300 transform hover:scale-105 {{ ($selectedLanguage ?? 'german') === 'german' ? 'bg-gradient-to-r from-langzy-blue to-blue-600 text-white shadow-xl ring-2 ring-langzy-blue/30' : 'bg-white/90 backdrop-blur-sm text-gray-700 shadow-lg hover:shadow-xl border border-gray-200 hover:border-langzy-blue/30' }}">
-                        <span class="text-2xl">🇩🇪</span>
-                        <div class="text-left">
-                            <div class="font-bold {{ ($selectedLanguage ?? 'german') === 'german' ? 'text-white' : 'text-gray-800' }}">German</div>
-                            <div class="text-xs {{ ($selectedLanguage ?? 'german') === 'german' ? 'text-blue-100' : 'text-gray-500' }}">Deutsch</div>
-                        </div>
-                        @if(($selectedLanguage ?? 'german') === 'german')
-                            <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                        @endif
-                    </a>
-                    
-                    <!-- French -->
-                    <a href="{{ route('language.switch', 'french') }}" class="group relative flex items-center gap-3 px-5 py-3 rounded-2xl transition-all duration-300 transform hover:scale-105 {{ ($selectedLanguage ?? 'german') === 'french' ? 'bg-gradient-to-r from-langzy-blue to-blue-600 text-white shadow-xl ring-2 ring-langzy-blue/30' : 'bg-white/90 backdrop-blur-sm text-gray-700 shadow-lg hover:shadow-xl border border-gray-200 hover:border-langzy-blue/30' }}">
-                        <span class="text-2xl">🇫🇷</span>
-                        <div class="text-left">
-                            <div class="font-bold {{ ($selectedLanguage ?? 'german') === 'french' ? 'text-white' : 'text-gray-800' }}">French</div>
-                            <div class="text-xs {{ ($selectedLanguage ?? 'german') === 'french' ? 'text-blue-100' : 'text-gray-500' }}">Français</div>
-                        </div>
-                        @if(($selectedLanguage ?? 'german') === 'french')
-                            <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                        @endif
-                    </a>
-                    
-                    <!-- Austria -->
-                    <a href="{{ route('language.switch', 'austrian') }}" class="group relative flex items-center gap-3 px-5 py-3 rounded-2xl transition-all duration-300 transform hover:scale-105 {{ ($selectedLanguage ?? 'german') === 'austrian' ? 'bg-gradient-to-r from-langzy-blue to-blue-600 text-white shadow-xl ring-2 ring-langzy-blue/30' : 'bg-white/90 backdrop-blur-sm text-gray-700 shadow-lg hover:shadow-xl border border-gray-200 hover:border-langzy-blue/30' }}">
-                        <span class="text-2xl">🇦🇹</span>
-                        <div class="text-left">
-                            <div class="font-bold {{ ($selectedLanguage ?? 'german') === 'austrian' ? 'text-white' : 'text-gray-800' }}">Austria</div>
-                            <div class="text-xs {{ ($selectedLanguage ?? 'german') === 'austrian' ? 'text-blue-100' : 'text-gray-500' }}">Österreich</div>
-                        </div>
-                        @if(($selectedLanguage ?? 'german') === 'austrian')
-                            <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                        @endif
-                    </a>
-                </div>
+            <!-- Current Language Badge -->
+            <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-langzy-blue/20 rounded-full px-6 py-2 mb-8 shadow-lg">
+                @if(($selectedLanguage ?? 'german') === 'german')
+                    <span class="text-xl">🇩🇪</span>
+                    <span class="text-sm font-semibold text-langzy-text">German Course</span>
+                @elseif(($selectedLanguage ?? 'german') === 'french')
+                    <span class="text-xl">🇫🇷</span>
+                    <span class="text-sm font-semibold text-langzy-text">French Course</span>
+                @else
+                    <span class="text-xl">🇦🇹</span>
+                    <span class="text-sm font-semibold text-langzy-text">Austria Course</span>
+                @endif
+                <a href="{{ route('welcome') }}" class="ml-2 text-xs text-langzy-blue hover:text-blue-700 font-medium underline">Change</a>
             </div>
         
             

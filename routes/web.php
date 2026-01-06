@@ -33,7 +33,8 @@ Route::get('/create-storage-link', function () {
     }
 });
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/our-team', [HomeController::class, 'ourTeam'])->name('our-team');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');

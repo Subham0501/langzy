@@ -8,10 +8,26 @@ use App\Models\Teacher;
 
 class HomeController extends Controller
 {
+    /**
+     * Show the welcome/language selection page
+     */
+    public function welcome()
+    {
+        // Clear language selection so user can choose again
+        session()->forget('selected_language');
+        
+        return view('welcome');
+    }
+
     public function index()
     {
-        // Get selected language from session, default to 'german'
-        $selectedLanguage = session('selected_language', 'german');
+        // If no language selected, redirect to welcome page
+        if (!session()->has('selected_language')) {
+            return redirect()->route('welcome');
+        }
+        
+        // Get selected language from session
+        $selectedLanguage = session('selected_language');
         
         $counsellors = Counsellor::where('is_active', true)
             ->byLanguage($selectedLanguage)
@@ -70,6 +86,7 @@ class HomeController extends Controller
             session(['selected_language' => $language]);
         }
         
-        return redirect()->back();
+        // Redirect to home page after selecting language
+        return redirect()->route('home');
     }
 }
