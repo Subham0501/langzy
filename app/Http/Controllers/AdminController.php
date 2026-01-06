@@ -128,7 +128,8 @@ class AdminController extends Controller
             'price_rs' => 'required|integer|min:0',
             'duration_minutes' => 'required|integer|min:10|max:240',
             'priority' => 'nullable|integer|min:0|max:999',
-            'is_active' => 'nullable|in:on,1,true'
+            'is_active' => 'nullable|in:on,1,true',
+            'language' => 'required|in:german,french'
         ]);
         
         $data['is_active'] = $request->has('is_active');

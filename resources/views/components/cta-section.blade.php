@@ -16,10 +16,10 @@
         </div>
         <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
             Ready to Start Your<br>
-            <span class="bg-gradient-to-r from-yellow-200 to-yellow-400 bg-clip-text text-transparent">German Journey?</span>
+            <span class="bg-gradient-to-r from-yellow-200 to-yellow-400 bg-clip-text text-transparent">{{ ucfirst($selectedLanguage ?? 'german') }} Journey?</span>
         </h2>
         <p class="text-xl md:text-2xl text-blue-100 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Join thousands of successful learners and master German with our expert-guided courses.
+            Join thousands of successful learners and master {{ ucfirst($selectedLanguage ?? 'german') }} with our expert-guided courses.
         </p>
         <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
             <a href="/contact" class="group inline-flex items-center justify-center gap-3 bg-white text-langzy-blue px-10 py-5 rounded-full text-lg font-bold hover:bg-blue-50 transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:scale-105">

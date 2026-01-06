@@ -23,14 +23,14 @@
             <!-- FAQ Item 1 -->
             <div class="faq-item bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300">
                 <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between hover:bg-gray-50 transition-colors group" onclick="toggleFaq(this)">
-                    <span class="text-lg font-semibold text-langzy-text pr-4">What German language levels do you offer?</span>
+                    <span class="text-lg font-semibold text-langzy-text pr-4">What {{ ucfirst($selectedLanguage ?? 'german') }} language levels do you offer?</span>
                     <svg class="faq-icon w-6 h-6 text-langzy-blue flex-shrink-0 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
                 </button>
                 <div class="faq-answer hidden px-6 pb-5">
                     <p class="text-gray-700 leading-relaxed">
-                        We offer comprehensive German language courses for three levels: A1 (Beginner), A2 (Elementary), and B1 (Intermediate). Each level is designed to build upon the previous one, ensuring a structured learning path from beginner to confident speaker.
+                        We offer comprehensive {{ ucfirst($selectedLanguage ?? 'german') }} language courses for three levels: A1 (Beginner), A2 (Elementary), and B1 (Intermediate). Each level is designed to build upon the previous one, ensuring a structured learning path from beginner to confident speaker.
                     </p>
                 </div>
             </div>

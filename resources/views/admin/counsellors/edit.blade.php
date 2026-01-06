@@ -36,6 +36,13 @@
                 <input name="role" value="{{ old('role', $counsellor->role) }}" class="w-full rounded-xl border border-gray-200 px-4 py-3 focus:ring-2 focus:ring-langzy-blue">
             </div>
             <div>
+                <label class="block text-sm font-medium mb-1">Language</label>
+                <select name="language" required class="w-full rounded-xl border border-gray-200 px-4 py-3 focus:ring-2 focus:ring-langzy-blue">
+                    <option value="german" {{ old('language', $counsellor->language ?? 'german') === 'german' ? 'selected' : '' }}>German</option>
+                    <option value="french" {{ old('language', $counsellor->language ?? 'german') === 'french' ? 'selected' : '' }}>French</option>
+                </select>
+            </div>
+            <div>
                 <label class="block text-sm font-medium mb-1">Address</label>
                 <input name="address" value="{{ old('address', $counsellor->address) }}" class="w-full rounded-xl border border-gray-200 px-4 py-3 focus:ring-2 focus:ring-langzy-blue" placeholder="City, Country or full address">
             </div>

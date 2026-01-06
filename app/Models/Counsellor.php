@@ -19,7 +19,16 @@ class Counsellor extends Model
         'duration_minutes',
         'is_active',
         'priority',
+        'language',
     ];
+
+    /**
+     * Scope a query to filter counsellors by language.
+     */
+    public function scopeByLanguage($query, $language)
+    {
+        return $query->where('language', $language);
+    }
 }
 
 

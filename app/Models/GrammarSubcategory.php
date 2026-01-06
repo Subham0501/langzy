@@ -12,7 +12,8 @@ class GrammarSubcategory extends Model
         'description',
         'slug',
         'is_active',
-        'sort_order'
+        'sort_order',
+        'language'
     ];
 
     protected $casts = [
@@ -33,5 +34,13 @@ class GrammarSubcategory extends Model
     public function contents()
     {
         return $this->hasMany(GrammarContent::class);
+    }
+
+    /**
+     * Scope a query to filter subcategories by language.
+     */
+    public function scopeByLanguage($query, $language)
+    {
+        return $query->where('language', $language);
     }
 }

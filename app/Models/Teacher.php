@@ -17,6 +17,7 @@ class Teacher extends Model
         'photo_url',
         'is_active',
         'priority',
+        'language',
     ];
 
     protected $casts = [
@@ -62,5 +63,13 @@ class Teacher extends Model
     public function scopeOrderedByPriority($query)
     {
         return $query->orderBy('priority', 'desc')->orderBy('name');
+    }
+
+    /**
+     * Scope a query to filter teachers by language.
+     */
+    public function scopeByLanguage($query, $language)
+    {
+        return $query->where('language', $language);
     }
 }

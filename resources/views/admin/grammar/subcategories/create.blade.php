@@ -35,6 +35,20 @@
                     </div>
 
                     <div>
+                        <label for="language" class="block text-sm font-medium text-gray-700 mb-2">Language *</label>
+                        <select id="language" 
+                                name="language" 
+                                required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-langzy-blue focus:border-transparent">
+                            <option value="german" {{ old('language', 'german') === 'german' ? 'selected' : '' }}>German</option>
+                            <option value="french" {{ old('language') === 'french' ? 'selected' : '' }}>French</option>
+                        </select>
+                        @error('language')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
                         <label for="slug" class="block text-sm font-medium text-gray-700 mb-2">Slug</label>
                         <input type="text" 
                                id="slug" 

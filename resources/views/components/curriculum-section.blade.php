@@ -1,3 +1,119 @@
+@php
+    $selectedLanguage = $selectedLanguage ?? 'german';
+    $languageName = $selectedLanguage === 'austrian' ? 'Austrian German' : ucfirst($selectedLanguage);
+    
+    // Language-specific curriculum content
+    $curriculum = [
+        'german' => [
+            'A1' => [
+                'title' => 'Foundation Level',
+                'description' => 'Build your German foundation with essential vocabulary, basic grammar, and everyday conversations.',
+                'duration' => '2 months',
+                'topics' => [
+                    'Basic greetings and introductions',
+                    'Numbers, dates, and time',
+                    'Articles (der, die, das) & cases',
+                    'Present tense & simple sentences'
+                ]
+            ],
+            'A2' => [
+                'title' => 'Elementary Level',
+                'description' => 'Expand your vocabulary and master more complex grammar to handle everyday situations confidently.',
+                'duration' => '2 months',
+                'topics' => [
+                    'Past tense (Perfekt) & future tense',
+                    'Dative case & prepositions',
+                    'Modal verbs (können, müssen, wollen)',
+                    'Expressing opinions and preferences'
+                ]
+            ],
+            'B1' => [
+                'title' => 'Intermediate Level',
+                'description' => 'Achieve fluency in most situations and handle complex topics with confidence.',
+                'duration' => '2 months',
+                'topics' => [
+                    'Subjunctive mood (Konjunktiv II)',
+                    'Passive voice & relative clauses',
+                    'Business and professional German',
+                    'Writing formal emails and letters'
+                ]
+            ]
+        ],
+        'french' => [
+            'A1' => [
+                'title' => 'Beginner Level',
+                'description' => 'Basic communication and understanding of simple French. Communicate in familiar situations and understand simple French spoken slowly.',
+                'duration' => '6 months',
+                'topics' => [
+                    'Greetings, introductions & personal info',
+                    'Present tense (être, avoir, aller, faire)',
+                    'Articles (le, la, un, une) & negation',
+                    'Numbers, days, months & telling time'
+                ]
+            ],
+            'A2' => [
+                'title' => 'Elementary Level',
+                'description' => 'Handle everyday interactions comfortably. Interact with simple tasks and understand routine materials.',
+                'duration' => '6 months',
+                'topics' => [
+                    'Passé composé & future tense',
+                    'Reflexive verbs & pronouns',
+                    'Expanded negation (ne…plus, ne…jamais)',
+                    'Shopping, travel & daily life vocabulary'
+                ]
+            ],
+            'B1' => [
+                'title' => 'Intermediate Level',
+                'description' => 'Communicate independently in common situations. Confident communication in familiar subjects.',
+                'duration' => '6 months',
+                'topics' => [
+                    'Imparfait & conditional mood',
+                    'Relative pronouns (qui, que)',
+                    'Describe experiences, plans & ambitions',
+                    'Education, work & travel topics'
+                ]
+            ]
+        ],
+        'austrian' => [
+            'A1' => [
+                'title' => 'Foundation Level',
+                'description' => 'Build your Austrian German foundation with essential vocabulary, basic grammar, and everyday conversations.',
+                'duration' => '2 months',
+                'topics' => [
+                    'Basic greetings and introductions',
+                    'Numbers, dates, and time',
+                    'Articles (der, die, das) & cases',
+                    'Present tense & simple sentences'
+                ]
+            ],
+            'A2' => [
+                'title' => 'Elementary Level',
+                'description' => 'Expand your vocabulary and master more complex grammar to handle everyday situations confidently.',
+                'duration' => '2 months',
+                'topics' => [
+                    'Past tense (Perfekt) & future tense',
+                    'Dative case & prepositions',
+                    'Modal verbs (können, müssen, wollen)',
+                    'Expressing opinions and preferences'
+                ]
+            ],
+            'B1' => [
+                'title' => 'Intermediate Level',
+                'description' => 'Achieve fluency in most situations and handle complex topics with confidence.',
+                'duration' => '2 months',
+                'topics' => [
+                    'Subjunctive mood (Konjunktiv II)',
+                    'Passive voice & relative clauses',
+                    'Business and professional German',
+                    'Writing formal emails and letters'
+                ]
+            ]
+        ]
+    ];
+    
+    $currentCurriculum = $curriculum[$selectedLanguage] ?? $curriculum['german'];
+@endphp
+
 <!-- Course Curriculum Section -->
 <section class="py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden">
     <!-- Background Decoration -->
@@ -15,7 +131,7 @@
             </div>
             <h2 class="text-4xl md:text-5xl font-extrabold text-langzy-text mb-6">What You'll Learn</h2>
             <p class="text-xl md:text-2xl text-langzy-gray max-w-3xl mx-auto leading-relaxed">
-                Comprehensive curriculum designed to take you from beginner to confident German speaker
+                Comprehensive curriculum designed to take you from beginner to confident {{ $languageName }} speaker
             </p>
         </div>
 
@@ -31,40 +147,24 @@
                         </div>
                         <span class="text-sm font-bold text-green-600 bg-green-50 px-3 py-1 rounded-full">Beginner</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-langzy-text mb-4">Foundation Level</h3>
+                    <h3 class="text-2xl font-bold text-langzy-text mb-4">{{ $currentCurriculum['A1']['title'] }}</h3>
                     <p class="text-langzy-gray mb-6 leading-relaxed">
-                        Build your German foundation with essential vocabulary, basic grammar, and everyday conversations.
+                        {{ $currentCurriculum['A1']['description'] }}
                     </p>
                     <ul class="space-y-3 mb-6">
+                        @foreach($currentCurriculum['A1']['topics'] as $topic)
                         <li class="flex items-start gap-3">
                             <svg class="w-5 h-5 text-langzy-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                             </svg>
-                            <span class="text-gray-700">Basic greetings and introductions</span>
+                            <span class="text-gray-700">{{ $topic }}</span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-langzy-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-gray-700">Numbers, dates, and time</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-langzy-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-gray-700">Essential grammar structures</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-langzy-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-gray-700">Simple daily conversations</span>
-                        </li>
+                        @endforeach
                     </ul>
                     <div class="pt-4 border-t border-gray-100">
                         <div class="flex items-center justify-between text-sm">
                             <span class="text-gray-600">Duration:</span>
-                            <span class="font-semibold text-langzy-text">2 months</span>
+                            <span class="font-semibold text-langzy-text">{{ $currentCurriculum['A1']['duration'] }}</span>
                         </div>
                     </div>
                 </div>
@@ -83,40 +183,24 @@
                         </div>
                         <span class="text-sm font-bold text-langzy-blue bg-langzy-blue/10 px-3 py-1 rounded-full">Elementary</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-langzy-text mb-4">Elementary Level</h3>
+                    <h3 class="text-2xl font-bold text-langzy-text mb-4">{{ $currentCurriculum['A2']['title'] }}</h3>
                     <p class="text-langzy-gray mb-6 leading-relaxed">
-                        Expand your vocabulary and master more complex grammar to handle everyday situations confidently.
+                        {{ $currentCurriculum['A2']['description'] }}
                     </p>
                     <ul class="space-y-3 mb-6">
+                        @foreach($currentCurriculum['A2']['topics'] as $topic)
                         <li class="flex items-start gap-3">
                             <svg class="w-5 h-5 text-langzy-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                             </svg>
-                            <span class="text-gray-700">Past and future tenses</span>
+                            <span class="text-gray-700">{{ $topic }}</span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-langzy-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-gray-700">Shopping, restaurants, travel</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-langzy-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-gray-700">Describing experiences and events</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-langzy-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-gray-700">Expressing opinions and preferences</span>
-                        </li>
+                        @endforeach
                     </ul>
                     <div class="pt-4 border-t border-gray-100">
                         <div class="flex items-center justify-between text-sm">
                             <span class="text-gray-600">Duration:</span>
-                            <span class="font-semibold text-langzy-text">2 months</span>
+                            <span class="font-semibold text-langzy-text">{{ $currentCurriculum['A2']['duration'] }}</span>
                         </div>
                     </div>
                 </div>
@@ -132,40 +216,24 @@
                         </div>
                         <span class="text-sm font-bold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">Intermediate</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-langzy-text mb-4">Intermediate Level</h3>
+                    <h3 class="text-2xl font-bold text-langzy-text mb-4">{{ $currentCurriculum['B1']['title'] }}</h3>
                     <p class="text-langzy-gray mb-6 leading-relaxed">
-                        Achieve fluency in most situations and handle complex topics with confidence.
+                        {{ $currentCurriculum['B1']['description'] }}
                     </p>
                     <ul class="space-y-3 mb-6">
+                        @foreach($currentCurriculum['B1']['topics'] as $topic)
                         <li class="flex items-start gap-3">
                             <svg class="w-5 h-5 text-langzy-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                             </svg>
-                            <span class="text-gray-700">Complex grammar structures</span>
+                            <span class="text-gray-700">{{ $topic }}</span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-langzy-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-gray-700">Business and professional German</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-langzy-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-gray-700">Abstract topics and discussions</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-langzy-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-gray-700">Writing formal emails and letters</span>
-                        </li>
+                        @endforeach
                     </ul>
                     <div class="pt-4 border-t border-gray-100">
                         <div class="flex items-center justify-between text-sm">
                             <span class="text-gray-600">Duration:</span>
-                            <span class="font-semibold text-langzy-text">2 months</span>
+                            <span class="font-semibold text-langzy-text">{{ $currentCurriculum['B1']['duration'] }}</span>
                         </div>
                     </div>
                 </div>
@@ -181,7 +249,7 @@
                     </svg>
                 </div>
                 <h4 class="font-bold text-langzy-text mb-2">Grammar Materials</h4>
-                <p class="text-sm text-langzy-gray">Comprehensive grammar lessons and exercises</p>
+                <p class="text-sm text-langzy-gray">Comprehensive {{ $languageName }} grammar lessons and exercises</p>
             </div>
             
             <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
@@ -221,7 +289,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
                 </svg>
-                <span>Explore Course Materials</span>
+                <span>Explore {{ $languageName }} Course Materials</span>
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                 </svg>
@@ -229,4 +297,3 @@
         </div>
     </div>
 </section>
-

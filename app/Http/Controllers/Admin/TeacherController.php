@@ -46,9 +46,10 @@ class TeacherController extends Controller
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'priority' => 'nullable|integer|min:0|max:100',
             'is_active' => 'nullable|boolean',
+            'language' => 'required|in:german,french',
         ]);
 
-        $data = $request->only(['name', 'role', 'country', 'description', 'priority']);
+        $data = $request->only(['name', 'role', 'country', 'description', 'priority', 'language']);
         $data['is_active'] = $request->boolean('is_active');
 
         if ($request->hasFile('photo')) {
@@ -91,9 +92,10 @@ class TeacherController extends Controller
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'priority' => 'nullable|integer|min:0|max:100',
             'is_active' => 'nullable|boolean',
+            'language' => 'required|in:german,french',
         ]);
 
-        $data = $request->only(['name', 'role', 'country', 'description', 'priority']);
+        $data = $request->only(['name', 'role', 'country', 'description', 'priority', 'language']);
         $data['is_active'] = $request->boolean('is_active');
 
         if ($request->hasFile('photo')) {

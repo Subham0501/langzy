@@ -39,6 +39,13 @@
                 <input name="country" value="{{ old('country') }}" placeholder="e.g., Germany, Austria, Switzerland" required class="w-full rounded-xl border border-gray-200 px-4 py-3 focus:ring-2 focus:ring-langzy-blue">
             </div>
             <div>
+                <label class="block text-sm font-medium mb-1">Language *</label>
+                <select name="language" required class="w-full rounded-xl border border-gray-200 px-4 py-3 focus:ring-2 focus:ring-langzy-blue">
+                    <option value="german" {{ old('language', 'german') === 'german' ? 'selected' : '' }}>German</option>
+                    <option value="french" {{ old('language') === 'french' ? 'selected' : '' }}>French</option>
+                </select>
+            </div>
+            <div>
                 <label class="block text-sm font-medium mb-1">Profile Photo</label>
                 <input type="file" name="photo" accept="image/*" class="w-full rounded-xl border border-gray-200 px-4 py-3 focus:ring-2 focus:ring-langzy-blue file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-langzy-blue file:text-white hover:file:bg-blue-600">
                 <p class="text-xs text-gray-500 mt-1">Upload JPG, PNG, GIF or WebP (max 2MB)</p>

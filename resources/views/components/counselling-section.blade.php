@@ -8,7 +8,7 @@
                 </svg>
             </div>
             <h2 class="text-4xl md:text-5xl font-bold text-langzy-text mb-4">Book a Counselling Session</h2>
-            <p class="text-lg md:text-xl text-langzy-gray max-w-2xl mx-auto">Paid one-on-one guidance to choose the right German course for you.</p>
+            <p class="text-lg md:text-xl text-langzy-gray max-w-2xl mx-auto">Paid one-on-one guidance to choose the right {{ ucfirst($selectedLanguage ?? 'german') }} course for you.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

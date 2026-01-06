@@ -54,9 +54,16 @@ class CourseMaterialController extends Controller
 
     public function index()
     {
+        // Get selected language from session, default to 'german'
+        $selectedLanguage = session('selected_language', 'german');
+        
         $categories = GrammarCategory::where('is_active', true)
-            ->with(['contents' => function($query) {
-                $query->where('is_active', true)->orderBy('sort_order')->orderBy('title');
+            ->byLanguage($selectedLanguage)
+            ->with(['contents' => function($query) use ($selectedLanguage) {
+                $query->where('is_active', true)
+                    ->byLanguage($selectedLanguage)
+                    ->orderBy('sort_order')
+                    ->orderBy('title');
             }])
             ->orderBy('sort_order')
             ->orderBy('name')
@@ -64,22 +71,41 @@ class CourseMaterialController extends Controller
 
         $isAuthenticated = $this->isUserAuthenticated();
 
-        return view('course-material.index', compact('categories', 'isAuthenticated'));
+        return view('course-material.index', compact('categories', 'isAuthenticated', 'selectedLanguage'));
     }
 
     public function showCategory(GrammarCategory $category)
     {
-        $category->load(['contents' => function($query) {
-            $query->where('is_active', true)->orderBy('sort_order')->orderBy('title');
+        // Get selected language from session, default to 'german'
+        $selectedLanguage = session('selected_language', 'german');
+        
+        // Ensure category matches selected language
+        if ($category->language !== $selectedLanguage) {
+            abort(404);
+        }
+        
+        $category->load(['contents' => function($query) use ($selectedLanguage) {
+            $query->where('is_active', true)
+                ->byLanguage($selectedLanguage)
+                ->orderBy('sort_order')
+                ->orderBy('title');
         }]);
 
         $isAuthenticated = $this->isUserAuthenticated();
 
-        return view('course-material.category', compact('category', 'isAuthenticated'));
+        return view('course-material.category', compact('category', 'isAuthenticated', 'selectedLanguage'));
     }
 
     public function showContent(GrammarContent $content)
     {
+        // Get selected language from session, default to 'german'
+        $selectedLanguage = session('selected_language', 'german');
+        
+        // Ensure content matches selected language
+        if ($content->language !== $selectedLanguage) {
+            abort(404);
+        }
+        
         $content->load(['category', 'subcategory']);
         
         $isAuthenticated = $this->isUserAuthenticated();
@@ -90,6 +116,6 @@ class CourseMaterialController extends Controller
             $content->content = $this->truncateContent($content->content, false);
         }
 
-        return view('course-material.content', compact('content', 'isAuthenticated'));
+        return view('course-material.content', compact('content', 'isAuthenticated', 'selectedLanguage'));
     }
 }

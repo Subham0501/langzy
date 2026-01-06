@@ -37,14 +37,14 @@
             <!-- Logo/Brand -->
             <div class="mb-10 relative flex flex-col items-center justify-center">
                 <div class="relative">
-                    <img src="{{ asset('Group 36.png') }}" alt="Langzy - German Language Learning Platform Logo" class="mb-4 max-w-xs md:max-w-md drop-shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('Group 36.png') }}" alt="Langzy - {{ ucfirst($selectedLanguage ?? 'german') }} Language Learning Platform Logo" class="mb-4 max-w-xs md:max-w-md drop-shadow-2xl transform hover:scale-105 transition-transform duration-300">
                     <div class="absolute inset-0 bg-langzy-blue/20 blur-2xl -z-10"></div>
                 </div>
             </div>
             
             <!-- Description -->
             <p class="text-xl md:text-2xl text-langzy-gray mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
-                <span class="text-langzy-text font-semibold">Langzy</span> helps you master German with expert tutors, structured courses, and personalized learning paths. 
+                <span class="text-langzy-text font-semibold">Langzy</span> helps you master {{ ucfirst($selectedLanguage ?? 'german') }} with expert tutors, structured courses, and personalized learning paths. 
                 <span class="text-langzy-text font-semibold">Join thousands of successful language learners worldwide.</span>
             </p>
             

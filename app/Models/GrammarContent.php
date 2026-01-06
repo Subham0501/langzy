@@ -18,7 +18,8 @@ class GrammarContent extends Model
         'meta_description',
         'is_active',
         'is_featured',
-        'sort_order'
+        'sort_order',
+        'language'
     ];
 
     protected $casts = [
@@ -45,5 +46,13 @@ class GrammarContent extends Model
     public function subcategory()
     {
         return $this->belongsTo(GrammarSubcategory::class, 'grammar_subcategory_id');
+    }
+
+    /**
+     * Scope a query to filter contents by language.
+     */
+    public function scopeByLanguage($query, $language)
+    {
+        return $query->where('language', $language);
     }
 }

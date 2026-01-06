@@ -40,12 +40,17 @@ class TeacherRatingController extends Controller
             ], 422);
         }
 
+        // Get the teacher's language
+        $teacher = Teacher::find($request->teacher_id);
+        $language = $teacher ? $teacher->language : session('selected_language', 'german');
+        
         // Create the rating
         $rating = TeacherRating::create([
             'teacher_id' => $request->teacher_id,
             'user_id' => Auth::id(),
             'rating' => $request->rating,
             'comment' => $request->comment,
+            'language' => $language,
         ]);
 
         // Load the teacher with updated ratings

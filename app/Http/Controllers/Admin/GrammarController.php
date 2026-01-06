@@ -42,7 +42,8 @@ class GrammarController extends Controller
             'description' => 'nullable|string',
             'slug' => 'nullable|string|unique:grammar_categories,slug',
             'is_active' => 'boolean',
-            'sort_order' => 'integer|min:0'
+            'sort_order' => 'integer|min:0',
+            'language' => 'required|in:german,french'
         ]);
 
         if (empty($data['slug'])) {
@@ -65,7 +66,8 @@ class GrammarController extends Controller
             'description' => 'nullable|string',
             'slug' => 'nullable|string|unique:grammar_categories,slug,' . $category->id,
             'is_active' => 'boolean',
-            'sort_order' => 'integer|min:0'
+            'sort_order' => 'integer|min:0',
+            'language' => 'required|in:german,french'
         ]);
 
         if (empty($data['slug'])) {
@@ -101,7 +103,8 @@ class GrammarController extends Controller
             'description' => 'nullable|string',
             'slug' => 'nullable|string|unique:grammar_subcategories,slug',
             'is_active' => 'boolean',
-            'sort_order' => 'integer|min:0'
+            'sort_order' => 'integer|min:0',
+            'language' => 'required|in:german,french'
         ]);
 
         if (empty($data['slug'])) {
@@ -124,7 +127,8 @@ class GrammarController extends Controller
             'description' => 'nullable|string',
             'slug' => 'nullable|string|unique:grammar_subcategories,slug,' . $subcategory->id,
             'is_active' => 'boolean',
-            'sort_order' => 'integer|min:0'
+            'sort_order' => 'integer|min:0',
+            'language' => 'required|in:german,french'
         ]);
 
         if (empty($data['slug'])) {
@@ -150,9 +154,14 @@ class GrammarController extends Controller
 
     public function create()
     {
-        $categories = GrammarCategory::where('is_active', true)->orderBy('name')->get();
-        $subcategories = GrammarSubcategory::where('is_active', true)->orderBy('name')->get();
-        return view('admin.grammar.contents.create', compact('categories', 'subcategories'));
+        $selectedLanguage = session('selected_language', 'german');
+        $categories = GrammarCategory::where('is_active', true)
+            ->byLanguage($selectedLanguage)
+            ->orderBy('name')->get();
+        $subcategories = GrammarSubcategory::where('is_active', true)
+            ->byLanguage($selectedLanguage)
+            ->orderBy('name')->get();
+        return view('admin.grammar.contents.create', compact('categories', 'subcategories', 'selectedLanguage'));
     }
 
     public function store(Request $request)
@@ -168,7 +177,8 @@ class GrammarController extends Controller
             'meta_description' => 'nullable|string',
             'is_active' => 'boolean',
             'is_featured' => 'boolean',
-            'sort_order' => 'integer|min:0'
+            'sort_order' => 'integer|min:0',
+            'language' => 'required|in:german,french'
         ]);
 
         if (empty($data['slug'])) {
@@ -200,9 +210,14 @@ class GrammarController extends Controller
 
     public function edit(GrammarContent $content)
     {
-        $categories = GrammarCategory::where('is_active', true)->orderBy('name')->get();
-        $subcategories = GrammarSubcategory::where('is_active', true)->orderBy('name')->get();
-        return view('admin.grammar.contents.edit', compact('content', 'categories', 'subcategories'));
+        $selectedLanguage = $content->language ?? session('selected_language', 'german');
+        $categories = GrammarCategory::where('is_active', true)
+            ->byLanguage($selectedLanguage)
+            ->orderBy('name')->get();
+        $subcategories = GrammarSubcategory::where('is_active', true)
+            ->byLanguage($selectedLanguage)
+            ->orderBy('name')->get();
+        return view('admin.grammar.contents.edit', compact('content', 'categories', 'subcategories', 'selectedLanguage'));
     }
 
     public function update(Request $request, GrammarContent $content)
@@ -218,7 +233,8 @@ class GrammarController extends Controller
             'meta_description' => 'nullable|string',
             'is_active' => 'boolean',
             'is_featured' => 'boolean',
-            'sort_order' => 'integer|min:0'
+            'sort_order' => 'integer|min:0',
+            'language' => 'required|in:german,french'
         ]);
 
         if (empty($data['slug'])) {

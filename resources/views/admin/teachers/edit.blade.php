@@ -40,6 +40,13 @@
                 <label class="block text-sm font-medium mb-1">Country *</label>
                 <input name="country" value="{{ old('country', $teacher->country) }}" placeholder="e.g., Germany, Austria, Switzerland" required class="w-full rounded-xl border border-gray-200 px-4 py-3 focus:ring-2 focus:ring-langzy-blue">
             </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Language *</label>
+                <select name="language" required class="w-full rounded-xl border border-gray-200 px-4 py-3 focus:ring-2 focus:ring-langzy-blue">
+                    <option value="german" {{ old('language', $teacher->language ?? 'german') === 'german' ? 'selected' : '' }}>German</option>
+                    <option value="french" {{ old('language', $teacher->language ?? 'german') === 'french' ? 'selected' : '' }}>French</option>
+                </select>
+            </div>
             
             @if($teacher->photo_url)
                 <div>

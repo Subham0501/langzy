@@ -43,7 +43,7 @@
                         </svg>
                     </div>
                     <h3 class="text-2xl font-bold text-langzy-text mb-4">Expert Teachers</h3>
-                    <p class="text-langzy-gray leading-relaxed text-lg">Learn from native German speakers and certified language teachers with years of experience in language education.</p>
+                    <p class="text-langzy-gray leading-relaxed text-lg">Learn from native {{ ucfirst($selectedLanguage ?? 'german') }} speakers and certified language teachers with years of experience in language education.</p>
                 </div>
             </div>
 

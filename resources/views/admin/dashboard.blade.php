@@ -20,6 +20,7 @@
                 <a href="{{ route('admin.teachers.index') }}" class="px-4 py-2 rounded-lg bg-white border">Teachers</a>
                 <a href="{{ route('admin.users.index') }}" class="px-4 py-2 rounded-lg bg-white border">Users</a>
                 <a href="{{ route('admin.grammar.categories') }}" class="px-4 py-2 rounded-lg bg-white border">Grammar & Vocab</a>
+                <a href="{{ route('admin.information.index') }}" class="px-4 py-2 rounded-lg bg-white border">Information</a>
                 <form method="POST" action="{{ route('admin.logout') }}">@csrf<button class="px-4 py-2 rounded-lg bg-gradient-to-r from-langzy-blue to-blue-600 text-white">Logout</button></form>
             </div>
         </div>
@@ -74,6 +75,8 @@
                 <a href="{{ route('admin.grammar.categories') }}" class="rounded-full border px-6 py-3">Manage Categories</a>
                 <a href="{{ route('admin.grammar.subcategories') }}" class="rounded-full border px-6 py-3">Manage Subcategories</a>
                 <a href="{{ route('admin.grammar.contents.index') }}" class="rounded-full border px-6 py-3">Manage Contents</a>
+                <a href="{{ route('admin.information.create') }}" class="rounded-full bg-green-500 text-white px-6 py-3 font-semibold">Add Information</a>
+                <a href="{{ route('admin.information.index') }}" class="rounded-full border px-6 py-3">Manage Information</a>
             </div>
         </div>
     </div>

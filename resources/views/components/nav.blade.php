@@ -9,21 +9,21 @@
             </div>
             
             <!-- Desktop Navigation Links - Hidden on mobile -->
-            <div class="hidden lg:flex items-center space-x-1">
-                <a href="/" class="relative px-4 py-2 text-langzy-text hover:text-langzy-blue font-semibold transition-all duration-300 rounded-lg hover:bg-langzy-blue/5 group">
+            <div class="hidden lg:flex items-center space-x-2 xl:space-x-4">
+                <a href="/" class="relative px-3 xl:px-4 py-2 text-langzy-text hover:text-langzy-blue font-medium text-sm xl:text-base transition-all duration-300 rounded-lg hover:bg-langzy-blue/5 group whitespace-nowrap">
                     <span class="relative z-10">Home</span>
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-langzy-blue to-blue-600 group-hover:w-full transition-all duration-300"></span>
                 </a>
-                <a href="{{ route('about-us') }}" class="relative px-4 py-2 text-langzy-text hover:text-langzy-blue font-semibold transition-all duration-300 rounded-lg hover:bg-langzy-blue/5 group">
-                    <span class="relative z-10">About Us</span>
+                <a href="{{ route('about-us') }}" class="relative px-3 xl:px-4 py-2 text-langzy-text hover:text-langzy-blue font-medium text-sm xl:text-base transition-all duration-300 rounded-lg hover:bg-langzy-blue/5 group whitespace-nowrap">
+                    <span class="relative z-10">About</span>
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-langzy-blue to-blue-600 group-hover:w-full transition-all duration-300"></span>
                 </a>
                 
                 <!-- Course Material Dropdown -->
                 <div class="relative group">
-                    <a href="{{ route('course-material.index') }}" class="relative px-4 py-2 text-langzy-text hover:text-langzy-blue font-semibold transition-all duration-300 rounded-lg hover:bg-langzy-blue/5 flex items-center gap-1.5 group">
-                        <span class="relative z-10">Course Material</span>
-                        <svg class="ml-1 h-4 w-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <a href="{{ route('course-material.index') }}" class="relative px-3 xl:px-4 py-2 text-langzy-text hover:text-langzy-blue font-medium text-sm xl:text-base transition-all duration-300 rounded-lg hover:bg-langzy-blue/5 flex items-center gap-1 group whitespace-nowrap">
+                        <span class="relative z-10">Courses</span>
+                        <svg class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-langzy-blue to-blue-600 group-hover:w-full transition-all duration-300"></span>
@@ -61,40 +61,90 @@
                     </div>
                 </div>
                 
-                <a href="#pricing" class="relative px-4 py-2 text-langzy-text hover:text-langzy-blue font-semibold transition-all duration-300 rounded-lg hover:bg-langzy-blue/5 group">
+                <a href="#pricing" class="relative px-3 xl:px-4 py-2 text-langzy-text hover:text-langzy-blue font-medium text-sm xl:text-base transition-all duration-300 rounded-lg hover:bg-langzy-blue/5 group whitespace-nowrap">
                     <span class="relative z-10">Pricing</span>
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-langzy-blue to-blue-600 group-hover:w-full transition-all duration-300"></span>
                 </a>
-                <a href="#reviews" class="relative px-4 py-2 text-langzy-text hover:text-langzy-blue font-semibold transition-all duration-300 rounded-lg hover:bg-langzy-blue/5 group">
+                <a href="#reviews" class="relative px-3 xl:px-4 py-2 text-langzy-text hover:text-langzy-blue font-medium text-sm xl:text-base transition-all duration-300 rounded-lg hover:bg-langzy-blue/5 group whitespace-nowrap">
                     <span class="relative z-10">Reviews</span>
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-langzy-blue to-blue-600 group-hover:w-full transition-all duration-300"></span>
                 </a>
-                <a href="/contact" class="relative px-4 py-2 text-langzy-text hover:text-langzy-blue font-semibold transition-all duration-300 rounded-lg hover:bg-langzy-blue/5 group">
+                <a href="/contact" class="relative px-3 xl:px-4 py-2 text-langzy-text hover:text-langzy-blue font-medium text-sm xl:text-base transition-all duration-300 rounded-lg hover:bg-langzy-blue/5 group whitespace-nowrap">
                     <span class="relative z-10">Contact</span>
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-langzy-blue to-blue-600 group-hover:w-full transition-all duration-300"></span>
                 </a>
-                <a href="{{ route('our-team') }}" class="relative px-4 py-2 text-langzy-text hover:text-langzy-blue font-semibold transition-all duration-300 rounded-lg hover:bg-langzy-blue/5 group">
-                    <span class="relative z-10">Our Team</span>
+                <a href="{{ route('our-team') }}" class="relative px-3 xl:px-4 py-2 text-langzy-text hover:text-langzy-blue font-medium text-sm xl:text-base transition-all duration-300 rounded-lg hover:bg-langzy-blue/5 group whitespace-nowrap">
+                    <span class="relative z-10">Team</span>
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-langzy-blue to-blue-600 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="{{ route('information.index') }}" class="relative px-3 xl:px-4 py-2 text-langzy-text hover:text-langzy-blue font-medium text-sm xl:text-base transition-all duration-300 rounded-lg hover:bg-langzy-blue/5 group whitespace-nowrap">
+                    <span class="relative z-10">Info</span>
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-langzy-blue to-blue-600 group-hover:w-full transition-all duration-300"></span>
                 </a>
             </div>
             
             <!-- Desktop Right Side Buttons - Hidden on mobile -->
-            <div class="hidden lg:flex items-center space-x-3">
+            <div class="hidden lg:flex items-center space-x-2 xl:space-x-3">
+                <!-- Language Switcher -->
+                <div class="relative group">
+                    <button class="flex items-center gap-1.5 px-3 py-2 text-langzy-text hover:text-langzy-blue font-medium text-sm transition-colors rounded-lg hover:bg-langzy-blue/5 border border-gray-200 hover:border-langzy-blue/30">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/>
+                        </svg>
+                        <span class="capitalize hidden xl:inline">{{ $selectedLanguage ?? 'german' }}</span>
+                        <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="absolute right-0 top-full mt-2 w-40 bg-white rounded-xl shadow-2xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform group-hover:translate-y-0 translate-y-2">
+                        <div class="py-2">
+                            <a href="{{ route('language.switch', 'german') }}" class="block px-4 py-3 text-langzy-text hover:text-langzy-blue hover:bg-gradient-to-r hover:from-langzy-blue/5 hover:to-blue-50 transition-all duration-200 mx-2 rounded-lg {{ ($selectedLanguage ?? 'german') === 'german' ? 'bg-langzy-blue/10 text-langzy-blue font-semibold' : '' }}">
+                                <div class="flex items-center justify-between">
+                                    <span>German</span>
+                                    @if(($selectedLanguage ?? 'german') === 'german')
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    @endif
+                                </div>
+                            </a>
+                            <a href="{{ route('language.switch', 'french') }}" class="block px-4 py-3 text-langzy-text hover:text-langzy-blue hover:bg-gradient-to-r hover:from-langzy-blue/5 hover:to-blue-50 transition-all duration-200 mx-2 rounded-lg {{ ($selectedLanguage ?? 'german') === 'french' ? 'bg-langzy-blue/10 text-langzy-blue font-semibold' : '' }}">
+                                <div class="flex items-center justify-between">
+                                    <span>French</span>
+                                    @if(($selectedLanguage ?? 'german') === 'french')
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    @endif
+                                </div>
+                            </a>
+                            <a href="{{ route('language.switch', 'austrian') }}" class="block px-4 py-3 text-langzy-text hover:text-langzy-blue hover:bg-gradient-to-r hover:from-langzy-blue/5 hover:to-blue-50 transition-all duration-200 mx-2 rounded-lg {{ ($selectedLanguage ?? 'german') === 'austrian' ? 'bg-langzy-blue/10 text-langzy-blue font-semibold' : '' }}">
+                                <div class="flex items-center justify-between">
+                                    <span>Austrian</span>
+                                    @if(($selectedLanguage ?? 'german') === 'austrian')
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    @endif
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 @if($isAuthenticated)
-                    <a href="/admin" class="px-4 py-2.5 text-langzy-text hover:text-langzy-blue font-semibold transition-colors rounded-lg hover:bg-langzy-blue/5">
+                    <a href="/admin" class="px-3 py-2 text-langzy-text hover:text-langzy-blue font-medium text-sm transition-colors rounded-lg hover:bg-langzy-blue/5">
                         Dashboard
                     </a>
-                    <a href="/admin/logout" class="px-4 py-2.5 text-gray-600 hover:text-red-600 font-semibold transition-colors rounded-lg hover:bg-red-50">
+                    <a href="/admin/logout" class="px-3 py-2 text-gray-600 hover:text-red-600 font-medium text-sm transition-colors rounded-lg hover:bg-red-50">
                         Logout
                     </a>
                 @else
-                    <a href="/admin/login" class="px-4 py-2.5 text-langzy-text hover:text-langzy-blue font-semibold transition-colors rounded-lg hover:bg-langzy-blue/5">
+                    <a href="/admin/login" class="px-3 py-2 text-langzy-text hover:text-langzy-blue font-medium text-sm transition-colors rounded-lg hover:bg-langzy-blue/5">
                         Login
                     </a>
-                    <a href="#pricing" class="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-langzy-blue to-blue-600 text-white px-6 py-2.5 rounded-full hover:from-blue-600 hover:to-blue-700 transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:scale-105 whitespace-nowrap overflow-hidden">
+                    <a href="#pricing" class="group relative inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-langzy-blue to-blue-600 text-white px-4 xl:px-5 py-2 rounded-full hover:from-blue-600 hover:to-blue-700 transition-all duration-300 font-semibold text-sm shadow-md hover:shadow-lg transform hover:scale-105 whitespace-nowrap overflow-hidden">
                         <span class="relative z-10">Get Started</span>
-                        <svg class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-3.5 h-3.5 relative z-10 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                         </svg>
                         <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -161,7 +211,25 @@
                 <a href="{{ route('our-team') }}" class="block px-4 py-3 text-langzy-text hover:text-langzy-blue font-semibold transition-all duration-200 rounded-xl hover:bg-gradient-to-r hover:from-langzy-blue/5 hover:to-blue-50">
                     Our Team
                 </a>
+                <a href="{{ route('information.index') }}" class="block px-4 py-3 text-langzy-text hover:text-langzy-blue font-semibold transition-all duration-200 rounded-xl hover:bg-gradient-to-r hover:from-langzy-blue/5 hover:to-blue-50">
+                    Information
+                </a>
                 <div class="pt-4 pb-2 border-t border-gray-200">
+                    <!-- Language Switcher Mobile -->
+                    <div class="px-4 mb-3">
+                        <div class="text-sm font-semibold text-gray-600 mb-2">Language</div>
+                        <div class="flex gap-2">
+                            <a href="{{ route('language.switch', 'german') }}" class="flex-1 px-3 py-2.5 text-center rounded-xl font-semibold text-sm transition-all duration-200 {{ ($selectedLanguage ?? 'german') === 'german' ? 'bg-gradient-to-r from-langzy-blue to-blue-600 text-white shadow-lg' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
+                                German
+                            </a>
+                            <a href="{{ route('language.switch', 'french') }}" class="flex-1 px-3 py-2.5 text-center rounded-xl font-semibold text-sm transition-all duration-200 {{ ($selectedLanguage ?? 'german') === 'french' ? 'bg-gradient-to-r from-langzy-blue to-blue-600 text-white shadow-lg' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
+                                French
+                            </a>
+                            <a href="{{ route('language.switch', 'austrian') }}" class="flex-1 px-3 py-2.5 text-center rounded-xl font-semibold text-sm transition-all duration-200 {{ ($selectedLanguage ?? 'german') === 'austrian' ? 'bg-gradient-to-r from-langzy-blue to-blue-600 text-white shadow-lg' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
+                                Austrian
+                            </a>
+                        </div>
+                    </div>
                     @if($isAuthenticated)
                         <a href="/admin" class="block px-4 py-3 text-langzy-text hover:text-langzy-blue font-semibold transition-all duration-200 rounded-xl hover:bg-gradient-to-r hover:from-langzy-blue/5 hover:to-blue-50 mb-2">
                             Dashboard

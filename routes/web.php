@@ -7,6 +7,10 @@ use App\Http\Controllers\Admin\GrammarController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\CourseMaterialController;
 use App\Http\Controllers\TeacherRatingController;
+use App\Http\Controllers\InformationController;
+use App\Http\Controllers\Admin\InformationController as AdminInformationController;
+
+Route::get('/language/{language}', [HomeController::class, 'switchLanguage'])->name('language.switch');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/our-team', [HomeController::class, 'ourTeam'])->name('our-team');
@@ -19,6 +23,15 @@ Route::get('/terms-of-service', function () {
 Route::get('/privacy-policy', function () {
     return view('privacy-policy');
 })->name('privacy');
+Route::get('/german-learning-plans', function () {
+    return view('german-learning-plans');
+})->name('german-learning-plans');
+Route::get('/french-learning-plans', function () {
+    return view('french-learning-plans');
+})->name('french-learning-plans');
+Route::get('/austrian-learning-plans', function () {
+    return view('austrian-learning-plans');
+})->name('austrian-learning-plans');
 
 // Sitemap Route
 Route::get('/sitemap.xml', function () {
@@ -62,6 +75,30 @@ Route::get('/sitemap.xml', function () {
             'changefreq' => 'weekly',
             'priority' => '0.9'
         ],
+        [
+            'loc' => route('german-learning-plans'),
+            'lastmod' => $lastmod,
+            'changefreq' => 'monthly',
+            'priority' => '0.9'
+        ],
+        [
+            'loc' => route('french-learning-plans'),
+            'lastmod' => $lastmod,
+            'changefreq' => 'monthly',
+            'priority' => '0.9'
+        ],
+        [
+            'loc' => route('austrian-learning-plans'),
+            'lastmod' => $lastmod,
+            'changefreq' => 'monthly',
+            'priority' => '0.9'
+        ],
+        [
+            'loc' => route('information.index'),
+            'lastmod' => $lastmod,
+            'changefreq' => 'weekly',
+            'priority' => '0.8'
+        ],
     ];
     
     $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
@@ -90,6 +127,11 @@ Route::get('/sitemap.xml', function () {
 Route::get('/course-material', [CourseMaterialController::class, 'index'])->name('course-material.index');
 Route::get('/course-material/category/{category}', [CourseMaterialController::class, 'showCategory'])->name('course-material.category');
 Route::get('/course-material/content/{content}', [CourseMaterialController::class, 'showContent'])->name('course-material.content');
+
+// Information Routes (Public - No Login Required)
+Route::get('/information', [InformationController::class, 'index'])->name('information.index');
+Route::get('/information/{information}', [InformationController::class, 'show'])->name('information.show');
+Route::get('/information/{information}/download', [InformationController::class, 'download'])->name('information.download');
 
 // Teacher Rating Routes
 Route::post('/teacher-ratings', [TeacherRatingController::class, 'store'])->name('teacher-ratings.store');
@@ -126,6 +168,16 @@ Route::middleware('admin')->group(function () {
         'update' => 'admin.teachers.update',
         'destroy' => 'admin.teachers.destroy',
     ]);
+
+    // Information Management Routes
+    Route::prefix('admin/information')->name('admin.information.')->group(function () {
+        Route::get('/', [AdminInformationController::class, 'index'])->name('index');
+        Route::get('/create', [AdminInformationController::class, 'create'])->name('create');
+        Route::post('/', [AdminInformationController::class, 'store'])->name('store');
+        Route::get('/{information}/edit', [AdminInformationController::class, 'edit'])->name('edit');
+        Route::put('/{information}', [AdminInformationController::class, 'update'])->name('update');
+        Route::delete('/{information}', [AdminInformationController::class, 'destroy'])->name('destroy');
+    });
 
     // Grammar/Vocabulary Management Routes
     Route::prefix('admin/grammar')->name('admin.grammar.')->group(function () {

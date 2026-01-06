@@ -14,6 +14,7 @@ class TeacherRating extends Model
         'user_id',
         'rating',
         'comment',
+        'language',
     ];
 
     protected $casts = [
@@ -42,5 +43,13 @@ class TeacherRating extends Model
     public function scopeWithComments($query)
     {
         return $query->whereNotNull('comment');
+    }
+
+    /**
+     * Scope a query to filter ratings by language.
+     */
+    public function scopeByLanguage($query, $language)
+    {
+        return $query->where('language', $language);
     }
 }

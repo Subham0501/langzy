@@ -12,7 +12,8 @@ class GrammarCategory extends Model
         'description',
         'slug',
         'is_active',
-        'sort_order'
+        'sort_order',
+        'language'
     ];
 
     protected $casts = [
@@ -38,5 +39,13 @@ class GrammarCategory extends Model
     public function contents()
     {
         return $this->hasMany(GrammarContent::class);
+    }
+
+    /**
+     * Scope a query to filter categories by language.
+     */
+    public function scopeByLanguage($query, $language)
+    {
+        return $query->where('language', $language);
     }
 }
