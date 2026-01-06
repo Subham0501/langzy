@@ -60,7 +60,7 @@
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-langzy-blue focus:border-transparent">
                             <option value="german" {{ old('language') === 'german' ? 'selected' : '' }}>German</option>
                             <option value="french" {{ old('language') === 'french' ? 'selected' : '' }}>French</option>
-                            <option value="austrian" {{ old('language') === 'austrian' ? 'selected' : '' }}>Austrian</option>
+                            <option value="austrian" {{ old('language') === 'austrian' ? 'selected' : '' }}>Austria</option>
                         </select>
                     </div>
 

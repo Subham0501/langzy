@@ -18,11 +18,11 @@ return new class extends Migration
         Schema::table('grammar_contents', function (Blueprint $table) use ($foreignKeys) {
             // Add foreign key constraint for grammar_category_id if not exists
             if (!in_array('grammar_contents_grammar_category_id_foreign', $foreignKeys)) {
-                $table->foreign('grammar_category_id')->references('id')->on('grammar_categories')->onDelete('cascade');
+            $table->foreign('grammar_category_id')->references('id')->on('grammar_categories')->onDelete('cascade');
             }
             // Add foreign key constraint for grammar_subcategory_id (nullable) if not exists
             if (!in_array('grammar_contents_grammar_subcategory_id_foreign', $foreignKeys)) {
-                $table->foreign('grammar_subcategory_id')->references('id')->on('grammar_subcategories')->onDelete('cascade');
+            $table->foreign('grammar_subcategory_id')->references('id')->on('grammar_subcategories')->onDelete('cascade');
             }
         });
     }
@@ -37,10 +37,10 @@ return new class extends Migration
         Schema::table('grammar_contents', function (Blueprint $table) use ($foreignKeys) {
             // Drop foreign key constraints if they exist
             if (in_array('grammar_contents_grammar_category_id_foreign', $foreignKeys)) {
-                $table->dropForeign(['grammar_category_id']);
+            $table->dropForeign(['grammar_category_id']);
             }
             if (in_array('grammar_contents_grammar_subcategory_id_foreign', $foreignKeys)) {
-                $table->dropForeign(['grammar_subcategory_id']);
+            $table->dropForeign(['grammar_subcategory_id']);
             }
         });
     }

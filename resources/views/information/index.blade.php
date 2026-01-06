@@ -56,7 +56,7 @@
                     @elseif($selectedLanguage === 'french')
                         Important information and resources for French language learners
                     @else
-                        Important information and resources for Austrian German learners
+                        Important information and resources for Austria German learners
                     @endif
                 </p>
             </div>

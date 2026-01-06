@@ -1,6 +1,6 @@
 @php
     $selectedLanguage = $selectedLanguage ?? 'german';
-    $languageName = $selectedLanguage === 'austrian' ? 'Austrian German' : ucfirst($selectedLanguage);
+    $languageName = $selectedLanguage === 'austrian' ? 'Austria German' : ucfirst($selectedLanguage);
     
     // Language-specific curriculum content
     $curriculum = [
@@ -77,7 +77,7 @@
         'austrian' => [
             'A1' => [
                 'title' => 'Foundation Level',
-                'description' => 'Build your Austrian German foundation with essential vocabulary, basic grammar, and everyday conversations.',
+                'description' => 'Build your Austria German foundation with essential vocabulary, basic grammar, and everyday conversations.',
                 'duration' => '2 months',
                 'topics' => [
                     'Basic greetings and introductions',

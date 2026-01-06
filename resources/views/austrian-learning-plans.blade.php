@@ -6,9 +6,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
     @include('components.seo-meta', [
-        'title' => 'Austrian German Learning Plans - Language Class & Exam Preparation | Langzy',
-        'description' => 'Choose your Austrian German learning plan at Langzy. Language classes from A1 to B2 level with comprehensive curriculum, or exam preparation classes for ÖSD certification.',
-        'keywords' => 'Austrian German learning plans, Austrian German language class, Austrian German exam preparation, A1 Austrian, A2 Austrian, B1 Austrian, B2 Austrian, ÖSD exam, Austrian course pricing',
+        'title' => 'Austria German Learning Plans - Language Class & Exam Preparation | Langzy',
+        'description' => 'Choose your Austria German learning plan at Langzy. Language classes from A1 to B2 level with comprehensive curriculum, or exam preparation classes for ÖSD certification.',
+        'keywords' => 'Austria German learning plans, Austria German language class, Austria German exam preparation, A1 Austria, A2 Austria, B1 Austria, B2 Austria, ÖSD exam, Austria course pricing',
         'image' => asset('Group 36.png'),
         'url' => url('/austrian-learning-plans'),
         'type' => 'website',
@@ -92,9 +92,9 @@
             <div class="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl mb-8 shadow-xl">
                 <span class="text-4xl">🇦🇹</span>
             </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">Choose Your Austrian German Learning Plan</h1>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">Choose Your Austria German Learning Plan</h1>
             <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
-                Master Austrian German with our comprehensive courses designed for all proficiency levels
+                Master Austria German with our comprehensive courses designed for all proficiency levels
             </p>
         </div>
     </section>
@@ -686,7 +686,7 @@
                         </div>
                         
                         <div class="mt-8 pt-6 border-t border-gray-200">
-                            <a href="https://wa.me/9701369495?text=Hi! I'm interested in the Austrian German ${plan.level} ${plan.title} (Rs ${plan.price}). Can you provide more information?" target="_blank" class="w-full bg-gradient-to-r from-langzy-blue to-blue-600 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2">
+                            <a href="https://wa.me/9701369495?text=Hi! I'm interested in the Austria German ${plan.level} ${plan.title} (Rs ${plan.price}). Can you provide more information?" target="_blank" class="w-full bg-gradient-to-r from-langzy-blue to-blue-600 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2">
                                 <span>Enroll Now - Rs ${plan.price}</span>
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
@@ -810,7 +810,7 @@
                         </div>
                         
                         <div class="mt-8 pt-6 border-t border-gray-200">
-                            <a href="https://wa.me/9701369495?text=Hi! I'm interested in the Austrian German ${plan.level} Exam Preparation (Rs ${plan.price}). Can you provide more information?" target="_blank" class="w-full bg-gradient-to-r from-langzy-blue to-blue-600 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2">
+                            <a href="https://wa.me/9701369495?text=Hi! I'm interested in the Austria German ${plan.level} Exam Preparation (Rs ${plan.price}). Can you provide more information?" target="_blank" class="w-full bg-gradient-to-r from-langzy-blue to-blue-600 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2">
                                 <span>Enroll Now - Rs ${plan.price}</span>
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>

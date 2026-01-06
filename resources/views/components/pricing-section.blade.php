@@ -1,6 +1,6 @@
 @php
     $selectedLanguage = $selectedLanguage ?? 'german';
-    $languageName = $selectedLanguage === 'austrian' ? 'Austrian German' : ucfirst($selectedLanguage);
+    $languageName = $selectedLanguage === 'austrian' ? 'Austria German' : ucfirst($selectedLanguage);
     
     if ($selectedLanguage === 'french') {
         $learningPlansRoute = route('french-learning-plans');
