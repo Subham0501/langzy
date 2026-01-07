@@ -15,13 +15,12 @@
                 <a href="{{ route('our-team') }}" class="px-3 xl:px-4 py-2 text-langzy-text hover:text-langzy-blue font-medium text-sm xl:text-base transition-colors rounded-lg hover:bg-langzy-blue/5">Team</a>
             </div>
 
-            <!-- Right Side -->
-            <div class="hidden lg:flex items-center space-x-3">
-                <a href="/admin/login" class="px-4 py-2 text-langzy-text hover:text-langzy-blue font-medium transition-colors rounded-lg hover:bg-langzy-blue/5">Login</a>
-                <a href="/" class="px-6 py-2.5 bg-gradient-to-r from-langzy-blue to-blue-600 text-white rounded-full font-semibold hover:from-blue-600 hover:to-blue-700 transition-all shadow-lg text-sm">
-                    Get Started →
-                </a>
-            </div>
+<!-- Right Side -->
+                <div class="hidden lg:flex items-center space-x-3">
+                    <a href="{{ route('contact') }}" class="px-6 py-2.5 bg-gradient-to-r from-langzy-blue to-blue-600 text-white rounded-full font-semibold hover:from-blue-600 hover:to-blue-700 transition-all shadow-lg text-sm">
+                        Get Started →
+                    </a>
+                </div>
 
             <!-- Mobile Menu Button -->
             <button id="simple-mobile-menu-btn" class="lg:hidden p-2 text-gray-700 hover:text-langzy-blue">
@@ -41,8 +40,7 @@
             <a href="{{ route('contact') }}" class="block py-3 px-4 text-langzy-text hover:text-langzy-blue font-semibold rounded-xl hover:bg-langzy-blue/5">Contact</a>
             <a href="{{ route('our-team') }}" class="block py-3 px-4 text-langzy-text hover:text-langzy-blue font-semibold rounded-xl hover:bg-langzy-blue/5">Team</a>
             <div class="pt-4 border-t border-gray-200 mt-2">
-                <a href="/admin/login" class="block py-3 px-4 text-langzy-text hover:text-langzy-blue font-semibold rounded-xl hover:bg-langzy-blue/5">Login</a>
-                <a href="/" class="block mx-4 mt-2 bg-gradient-to-r from-langzy-blue to-blue-600 text-white px-6 py-3 rounded-full font-bold shadow-lg text-center">
+                <a href="{{ route('contact') }}" class="block mx-4 mt-2 bg-gradient-to-r from-langzy-blue to-blue-600 text-white px-6 py-3 rounded-full font-bold shadow-lg text-center">
                     Get Started
                 </a>
             </div>
